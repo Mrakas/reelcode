@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ReelCodeBench</title>
+<meta name="description" content="ReelCodeBench: a benchmark for reconstructing motion-graphics videos as code and editing that code on request. 420 videos, 844 edit requirements, 18 models.">
+<meta property="og:title" content="ReelCodeBench: Can Frontier LLMs Edit What They Rebuild?">
+<meta property="og:description" content="A benchmark for code-based video reconstruction and editing: 420 videos, 844 edit requirements, 16 code-generating LLMs and 2 diffusion video models.">
+<meta property="og:image" content="https://mrakas.github.io/reelcode/static/images/og.jpg">
+<meta property="og:url" content="https://mrakas.github.io/reelcode/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="topnav" id="topnav">
+  <a class="brand" href="#top">ReelCode<span>Bench</span></a>
+  <div class="navlinks">
+    <a href="#task">Task</a>
+    <a href="#benchmark">Benchmark</a>
+    <a href="#reconstruction">Reconstruction</a>
+    <a href="#editing">Editing</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="#citation">Cite</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto" poster="static/videos/hero_mosaic.jpg">
+    <source src="static/videos/hero_mosaic.mp4" type="video/mp4">
+  </video>
+  <div class="hero-shade"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Benchmark · Code-based video reconstruction &amp; editing</p>
+    <h1><span class="ttl">ReelCodeBench</span><span class="sub">Can Frontier LLMs Edit What They Rebuild?</span></h1>
+    <p class="authors">
+      <span>Hohin Kwan<sup>1</sup></span>
+      <span>Hongyu Li<sup>2,&dagger;</sup></span>
+      <span>Hao Yu<sup>3</sup></span>
+      <span>Chi Hsu Tsai<sup>4</sup></span>
+      <span>Pei Yang<sup>5</sup></span>
+      <span>Houyuan Chen<sup>1</sup></span>
+      <span>Si Liu<sup>2</sup></span>
+      <span>Anyi Rao<sup>1,*</sup></span>
+    </p>
+    <p class="affils">
+      <span><sup>1</sup>HKUST MMLab</span>
+      <span><sup>2</sup>Beihang University</span>
+      <span><sup>3</sup>Tsinghua University</span>
+      <span><sup>4</sup>Peking University</span>
+      <span><sup>5</sup>Wuhan University</span>
+    </p>
+    <p class="notes"><sup>&dagger;</sup>Project leader &nbsp;·&nbsp; <sup>*</sup>Corresponding author</p>
+    <div class="buttons">
+      <a class="btn" href="#" data-todo="arXiv link"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M14 2v6h6" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Paper</a>
+      <a class="btn" href="#" data-todo="arXiv abs link"><span class="ax">arXiv</span></a>
+      <a class="btn" href="https://github.com/mrakas/reelcode"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.27 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>Code</a>
+      <a class="btn" href="#" data-todo="dataset link"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 5.5v13c0 1.7 3.6 3 8 3s8-1.3 8-3v-13M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Dataset</a>
+      <a class="btn ghost" href="#leaderboard"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Leaderboard</a>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#task" aria-label="Scroll down"><span></span></a>
+</header>
+
+<!-- ============ NUMBERS ============ -->
+<section class="numbers">
+  <div class="wrap grid4">
+    <div><b data-count="420">420</b><span>reference videos, 3 s to 3 min</span></div>
+    <div><b data-count="844">844</b><span>edit requirements across Where / When / How</span></div>
+    <div><b>16<small>+2</small></b><span>code-generating LLMs + diffusion video editors</span></div>
+    <div><b>~60<small>%</small></b><span>of required content kept by the best editor</span></div>
+  </div>
+</section>
+
+<!-- ============ TEASER / TASK ============ -->
+<section id="task" class="sec">
+  <div class="wrap">
+    <p class="kicker">One task, two stages</p>
+    <h2>Rebuild a video from pixels, then edit your own code.</h2>
+    <p class="lede">The model sees only a reference video. It writes a program (HTML, SVG, Canvas or Three.js) that renders the same motion graphics, then receives a natural-language instruction and must edit <em>its own</em> program. A judge checks rendered frames against fixed checklists.</p>
+
+    <div class="triptych" id="teaser">
+      <figure>
+        <div class="vbox"><video muted loop playsinline preload="metadata" data-src="static/videos/e_hologram-hud_ref.mp4" poster="static/videos/e_hologram-hud_ref.jpg"></video></div>
+        <figcaption><span class="step">1</span>Reference video <small>the only input</small></figcaption>
+      </figure>
+      <div class="arrow"><svg viewBox="0 0 40 24"><path d="M2 12h32M26 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2"/></svg><code>&lt;/&gt;</code></div>
+      <figure>
+        <div class="vbox"><video muted loop playsinline preload="metadata" data-src="static/videos/e_hologram-hud_astra_b.mp4" poster="static/videos/e_hologram-hud_astra_b.jpg"></video></div>
+        <figcaption><span class="step">2</span>Reconstruction <small>rendered from GPT-6 Astra's code</small></figcaption>
+      </figure>
+      <div class="arrow"><svg viewBox="0 0 40 24"><path d="M2 12h32M26 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2"/></svg><code>edit</code></div>
+      <figure>
+        <div class="vbox"><video muted loop playsinline preload="metadata" data-src="static/videos/e_hologram-hud_astra_a.mp4" poster="static/videos/e_hologram-hud_astra_a.jpg"></video></div>
+        <figcaption><span class="step">3</span>Edited video <small>same model edits its own program</small></figcaption>
+      </figure>
+    </div>
+    <blockquote class="instr" id="teaser-instr"></blockquote>
+    <div class="vctl" data-for="teaser"></div>
+  </div>
+</section>
+
+<!-- ============ ABSTRACT ============ -->
+<section class="sec alt" id="abstract">
+  <div class="wrap narrow">
+    <p class="kicker">Abstract</p>
+    <p class="abstract">Large language models increasingly create visual content by writing code, and motion-graphics videos are a natural target: many are already produced as programs in HTML, SVG, Canvas, or Three.js. Code makes a video editable, yet no benchmark tests whether a model can recreate a video from pixels alone and then edit its own program on request. We introduce <b>ReelCodeBench</b>, a benchmark for code-based video reconstruction and editing. Given only a reference video, a model writes a program that reproduces it, and then edits that program following a natural-language instruction. ReelCodeBench contains 420 videos, ranging from few-second motion clips to three-minute explainer animations across six content types and six visual forms, each paired with an editing task, for 844 edit requirements organized into a Where / When / How taxonomy of spatial, temporal, and appearance edits. Since edited videos have no ground truth, we score each task with a rubric answered by a vision-language model from rendered frames: completion questions for each change inside its time window, keep items for content that must stay unchanged, and an overall quality rating. This separates missed edits, wrong edits, and collateral damage. Evaluating sixteen code-generating models and two diffusion video generation models, we find that reconstruction errors carry into editing, that motion and timing are the main bottleneck in both stages, and that even the best editor keeps only about 60% of what it should.</p>
+  </div>
+</section>
+
+<!-- ============ BENCHMARK ============ -->
+<section id="benchmark" class="sec">
+  <div class="wrap">
+    <p class="kicker">Benchmark</p>
+    <h2>Curated motion graphics, human-verified edits, checklist judging.</h2>
+    <figure class="figure">
+      <img src="static/images/pipeline.webp" alt="Benchmark construction and evaluation pipeline" loading="lazy" width="2063" height="1534">
+      <figcaption><b>Benchmark construction and evaluation.</b> (a) Clips from five sources are filtered by rules and a VLM, labeled, and paired with human-verified edit tasks. (b) VLM judges score rendered frames with fixed checklists for reconstruction and editing.</figcaption>
+    </figure>
+
+    <div class="cards3">
+      <div class="card where"><span class="tag">Where</span><h3>Spatial</h3><p>Position, size, crop and layout of one element inside one time window.</p><em>301 requirements</em></div>
+      <div class="card when"><span class="tag">When</span><h3>Temporal</h3><p>Appearance time, entrances and exits, motion paths, transitions and trimming.</p><em>311 requirements</em></div>
+      <div class="card how"><span class="tag">How</span><h3>Appearance</h3><p>Text, typography, color and visual effects.</p><em>232 requirements</em></div>
+    </div>
+
+    <div class="split">
+      <div>
+        <h3>What is in the data</h3>
+        <ul class="facts">
+          <li><b>5 sources</b> from ~5.8K candidates: 162 Lottie animations, 74 code-driven short films (LemoLab), 60 open-source web animations, 86 YouTube clips, 38 clips from X and other platforms.</li>
+          <li><b>6 content types</b>: Explainer, Narrative, Brand Promo, Abstract, Product Demo, Charts &amp; Data.</li>
+          <li><b>6 visual forms</b>: Flat Vector, UI Design, Charts &amp; Diagrams, 3D Rendering, Drawn Illustration, Particles &amp; Shaders.</li>
+          <li><b>2.9 s to 179.3 s</b>, median 20 s. Each instruction holds 1, 2 or 3 requirements (123 / 170 / 127).</li>
+          <li><b>21.8 binary checks per video</b>: 13.9 reconstruction rubric items, 4.1 edit checks and 3.8 keep items.</li>
+        </ul>
+        <h3>How it is scored</h3>
+        <ul class="facts">
+          <li><b>S<sub>recon</sub></b> combines a weighted rubric over text, layout, style, motion and timing with four holistic 1–5 ratings.</li>
+          <li><b>S<sub>edit</sub></b> combines completion <i>C</i> of each change inside its time window, keep rate <i>K</i> for content that must not change, and overall quality <i>Q</i>. Missed edits, wrong edits and collateral damage are reported separately.</li>
+        </ul>
+      </div>
+      <figure class="figure small">
+        <img src="static/images/stats.webp" alt="Content type and visual form distribution" loading="lazy" width="715" height="660">
+        <figcaption>Inner ring: content type. Outer ring: visual form.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECON GALLERY ============ -->
+<section id="reconstruction" class="sec dark">
+  <div class="wrap">
+    <p class="kicker">Results · Stage 1</p>
+    <h2>Reconstruction: same video, different programs.</h2>
+    <p class="lede">Each tile is rendered from code that a model wrote after watching only the reference. Videos play in sync; pick a case below.</p>
+    <div class="chips" id="recon-tabs"></div>
+    <div class="gallery" id="recon-grid"></div>
+    <div class="vctl" data-for="recon-grid"></div>
+  </div>
+</section>
+
+<!-- ============ EDIT GALLERY ============ -->
+<section id="editing" class="sec">
+  <div class="wrap">
+    <p class="kicker">Results · Stage 2</p>
+    <h2>Editing: change what was asked, keep everything else.</h2>
+    <p class="lede">The same model edits its own reconstruction. Compare its video before and after the edit, and switch between models.</p>
+    <div class="chips" id="edit-tabs"></div>
+    <div class="editcase">
+      <div class="instrbar"><div class="axes" id="edit-axes"></div><blockquote class="instr" id="edit-instr"></blockquote></div>
+      <div class="models" id="edit-models"></div>
+      <div class="edit-grid" id="edit-grid"></div>
+      <div class="vctl" data-for="edit-grid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LEADERBOARD ============ -->
+<section id="leaderboard" class="sec alt">
+  <div class="wrap">
+    <p class="kicker">Leaderboard</p>
+    <h2>Sixteen LLMs and two video diffusion editors.</h2>
+    <div class="lb-head">
+      <div class="seg" id="lb-stage">
+        <button data-k="recon" class="on">Reconstruction</button>
+        <button data-k="edit">Editing</button>
+      </div>
+      <div class="seg small" id="lb-group">
+        <button data-k="all" class="on">All</button>
+        <button data-k="Closed">Closed API</button>
+        <button data-k="Open">Open-weight</button>
+        <button data-k="Diffusion">Diffusion</button>
+      </div>
+    </div>
+    <div class="lb-wrap"><table class="lb" id="lb"></table></div>
+    <p class="lb-note" id="lb-note"></p>
+  </div>
+</section>
+
+<!-- ============ FINDINGS ============ -->
+<section class="sec" id="findings">
+  <div class="wrap">
+    <p class="kicker">Findings</p>
+    <h2>What the benchmark shows.</h2>
+    <div class="cards3 findings">
+      <div class="card"><span class="num">01</span><h3>Reconstruction errors carry into editing</h3><p>A model edits its own program, so an element that is missing or badly structured after reconstruction is also hard to edit later.</p></div>
+      <div class="card"><span class="num">02</span><h3>Motion and timing are the bottleneck</h3><p>Across models, the Motion and Timing rubric dimensions and the When edits score lowest, in both stages.</p></div>
+      <div class="card"><span class="num">03</span><h3>Keeping is as hard as changing</h3><p>The best editor, GPT-6 Astra, completes 72% of requested changes but keeps only about 61% of what should stay unchanged.</p></div>
+    </div>
+    <figure class="figure">
+      <img src="static/images/teaser.webp" alt="Overview figure: reconstruct then edit, judge, code vs pixel editing, cost vs score" loading="lazy" width="2063" height="1684">
+      <figcaption><b>Overview.</b> Top: one task, reconstruct then edit, with the checklist judge. Bottom: code editing versus pixel editing, and cost–score Pareto fronts for both stages.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CITATION ============ -->
+<section id="citation" class="sec dark">
+  <div class="wrap narrow">
+    <p class="kicker">Citation</p>
+    <h2>BibTeX</h2>
+    <div class="bib">
+      <button class="copy" id="copy-bib">Copy</button>
+<pre id="bibtex">@article{kwan2026reelcodebench,
+  title   = {ReelCodeBench: Can Frontier LLMs Edit What They Rebuild?},
+  author  = {Kwan, Hohin and Li, Hongyu and Yu, Hao and Tsai, Chi Hsu and
+             Yang, Pei and Chen, Houyuan and Liu, Si and Rao, Anyi},
+  journal = {arXiv preprint arXiv:XXXX.XXXXX},
+  year    = {2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Reference clips remain the property of their original creators and are shown for research purposes only. Model outputs are rendered from code written by the listed models.</p>
+    <p>Page layout by the ReelCodeBench authors. Fonts: Inter, Instrument Serif, JetBrains Mono.</p>
+  </div>
+</footer>
+
+<script src="assets/cases.js"></script>
+<script src="assets/tables.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
