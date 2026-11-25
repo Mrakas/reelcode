@@ -34,60 +34,68 @@ window.CASES = {
    ]
   },
   {
-   "id": "paper-lantern_p1",
-   "short": "Ink & lanterns",
-   "caption": "Ink-painting narrative with vertical calligraphy",
+   "id": "engraving",
+   "short": "Engraving",
+   "caption": "Scientific engraving plate, the honeybee",
    "source": "LemoLab",
    "tiles": [
     {
      "label": "Reference",
      "ref": true,
-     "src": "static/videos/r_paper-lantern_p1_ref"
+     "src": "static/videos/r_engraving_ref"
     },
     {
      "label": "GPT-6 Astra",
-     "src": "static/videos/r_paper-lantern_p1_astra"
+     "src": "static/videos/r_engraving_astra"
     },
     {
      "label": "GPT-6.1 Sol",
-     "src": "static/videos/r_paper-lantern_p1_sol"
+     "src": "static/videos/r_engraving_sol"
     },
     {
      "label": "Claude Opus 5.5",
-     "src": "static/videos/r_paper-lantern_p1_opus"
+     "src": "static/videos/r_engraving_opus"
+    },
+    {
+     "label": "DeepSeek-V4-Flash",
+     "src": "static/videos/r_engraving_dsflash"
     },
     {
      "label": "Claude Sonnet 5.5",
-     "src": "static/videos/r_paper-lantern_p1_sonnet"
+     "src": "static/videos/r_engraving_sonnet"
     }
    ]
   },
   {
-   "id": "pictogram-motion_p2",
-   "short": "Pictograms",
-   "caption": "Sports pictogram title sequence",
+   "id": "rubber-hose",
+   "short": "Rubber hose",
+   "caption": "1930s rubber-hose cartoon",
    "source": "LemoLab",
    "tiles": [
     {
      "label": "Reference",
      "ref": true,
-     "src": "static/videos/r_pictogram-motion_p2_ref"
+     "src": "static/videos/r_rubber-hose_ref"
     },
     {
      "label": "GPT-6 Astra",
-     "src": "static/videos/r_pictogram-motion_p2_astra"
+     "src": "static/videos/r_rubber-hose_astra"
     },
     {
      "label": "GPT-6.1 Sol",
-     "src": "static/videos/r_pictogram-motion_p2_sol"
+     "src": "static/videos/r_rubber-hose_sol"
     },
     {
      "label": "Claude Opus 5.5",
-     "src": "static/videos/r_pictogram-motion_p2_opus"
+     "src": "static/videos/r_rubber-hose_opus"
+    },
+    {
+     "label": "DeepSeek-V4-Flash",
+     "src": "static/videos/r_rubber-hose_dsflash"
     },
     {
      "label": "Claude Sonnet 5.5",
-     "src": "static/videos/r_pictogram-motion_p2_sonnet"
+     "src": "static/videos/r_rubber-hose_sonnet"
     }
    ]
   },
@@ -125,31 +133,31 @@ window.CASES = {
    ]
   },
   {
-   "id": "ukiyoe",
-   "short": "Ukiyo-e",
-   "caption": "Ukiyo-e illustrated story",
+   "id": "scifi-toon",
+   "short": "Cartoon",
+   "caption": "Sci-fi sitcom cartoon",
    "source": "LemoLab",
    "tiles": [
     {
      "label": "Reference",
      "ref": true,
-     "src": "static/videos/r_ukiyoe_ref"
-    },
-    {
-     "label": "GPT-6 Astra",
-     "src": "static/videos/r_ukiyoe_astra"
+     "src": "static/videos/r_scifi-toon_ref"
     },
     {
      "label": "GPT-6.1 Sol",
-     "src": "static/videos/r_ukiyoe_sol"
+     "src": "static/videos/r_scifi-toon_sol"
     },
     {
      "label": "Claude Opus 5.5",
-     "src": "static/videos/r_ukiyoe_opus"
+     "src": "static/videos/r_scifi-toon_opus"
+    },
+    {
+     "label": "DeepSeek-V4-Flash",
+     "src": "static/videos/r_scifi-toon_dsflash"
     },
     {
      "label": "Claude Sonnet 5.5",
-     "src": "static/videos/r_ukiyoe_sonnet"
+     "src": "static/videos/r_scifi-toon_sonnet"
     }
    ]
   },
@@ -381,33 +389,34 @@ window.CASES = {
    ]
   },
   {
-   "id": "halftone-dossier",
-   "short": "Shift group",
-   "instruction": "In the closing shot from 26–30 seconds, shift the yellow folder, sleeping cat and red “结案” stamp together toward the left, leaving more open space on the right. Keep the sleep marks and little meow with the cat.",
+   "id": "htmlm2_0009",
+   "short": "Reorder rows",
+   "instruction": "For the first 5 seconds, put Bao’s whole row above Ada’s so Bao appears first. From 11 seconds to the end, make the dark A circle twice as big so it stands out.",
    "tags": [
-    "Where"
+    "Where",
+    "How"
    ],
-   "source": "LemoLab",
+   "source": "htmlm",
    "window": [
-    22,
-    30
+    0,
+    16
    ],
-   "ref": "static/videos/e_halftone-dossier_ref",
+   "ref": "static/videos/e_htmlm2_0009_ref",
    "runs": [
     {
+     "model": "GPT-6.1 Sol",
+     "before": "static/videos/e_htmlm2_0009_sol_b",
+     "after": "static/videos/e_htmlm2_0009_sol_a"
+    },
+    {
      "model": "Claude Opus 5.5",
-     "before": "static/videos/e_halftone-dossier_opus_b",
-     "after": "static/videos/e_halftone-dossier_opus_a"
+     "before": "static/videos/e_htmlm2_0009_opus_b",
+     "after": "static/videos/e_htmlm2_0009_opus_a"
     },
     {
      "model": "Claude Sonnet 5.5",
-     "before": "static/videos/e_halftone-dossier_sonnet_b",
-     "after": "static/videos/e_halftone-dossier_sonnet_a"
-    },
-    {
-     "model": "GPT-6.1 Sol",
-     "before": "static/videos/e_halftone-dossier_sol_b",
-     "after": "static/videos/e_halftone-dossier_sol_a"
+     "before": "static/videos/e_htmlm2_0009_sonnet_b",
+     "after": "static/videos/e_htmlm2_0009_sonnet_a"
     }
    ]
   },
