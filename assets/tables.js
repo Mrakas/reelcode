@@ -390,7 +390,7 @@ window.TABLES = {
 85.2
 ],
 "new": true,
-"note": "Judged partly by GPT-6.1 Sol (same family); the independent Sonnet judge scores its edits higher (64.6 vs 62.2).",
+"note": null,
 "cost": null
 },
 {
@@ -868,7 +868,7 @@ window.TABLES = {
 54.9
 ],
 "new": true,
-"note": "Judged partly by GPT-6.1 Sol (same family); the independent Sonnet judge scores its edits higher (64.6 vs 62.2).",
+"note": null,
 "cost": null
 },
 {

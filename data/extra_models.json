@@ -5,7 +5,6 @@
    "name": "GPT-6.2 Sol",
    "group": "Closed-source Models (API)",
    "status": "full",
-   "note": "Judged partly by GPT-6.1 Sol (same family); the independent Sonnet judge scores its edits higher (64.6 vs 62.2).",
    "recon": [
     66.4,
     67.3,
@@ -131,7 +130,6 @@
    "name": "MiMo-V2.6-Pro",
    "group": "Closed-source Models (API)",
    "status": "full",
-   "note": null,
    "recon": [
     38.1,
     29.5,
