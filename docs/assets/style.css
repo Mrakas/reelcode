@@ -328,3 +328,7 @@ h3 { font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
 .lb-head.mid { margin: 4px 0 16px; justify-content: flex-start; }
 
 h2 { max-width: none; }
+
+.contact { margin: 8px 0 0; font-size: 14px; color: #c9cbd2; }
+.contact a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.35); }
+.contact a:hover { border-bottom-color: #fff; }
