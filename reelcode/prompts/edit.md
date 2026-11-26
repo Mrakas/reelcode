@@ -1,0 +1,3 @@
+The current directory contains index.html, a single-file reconstruction (HTML/CSS/JS) of a reference video. The reference video's frames are attached as ref_*.jpg, and frames of the current reconstruction's rendering as before_*.jpg (file names give the time in seconds). The recording rules still hold: the page starts by itself, sets window.__DURATION__, is a deterministic function of time, uses no network or external assets, canvas size and total duration unchanged.
+EDIT REQUEST (times refer to the video): {instr}
+Edit index.html in place so that its rendering shows this change. Change only what the request asks for and keep everything else as it is. The edit must be clearly visible. When finished reply with DONE and one line on what you changed.

@@ -1,0 +1,5 @@
+openai>=1.40
+huggingface_hub>=0.24
+playwright>=1.45
+numpy
+pillow
