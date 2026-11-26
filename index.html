@@ -67,16 +67,6 @@
   <a class="scroll-cue" href="#task" aria-label="Scroll down"><span></span></a>
 </header>
 
-<!-- ============ NUMBERS ============ -->
-<section class="numbers">
-  <div class="wrap grid4">
-    <div><b data-count="420">420</b><span>reference videos, 3 s to 3 min</span></div>
-    <div><b data-count="844">844</b><span>edit requirements across Where / When / How</span></div>
-    <div><b>16<small>+2</small></b><span>code-generating LLMs + diffusion video editors</span></div>
-    <div><b>~60<small>%</small></b><span>of required content kept by the best editor</span></div>
-  </div>
-</section>
-
 <!-- ============ TEASER / TASK ============ -->
 <section id="task" class="sec">
   <div class="wrap">
@@ -209,15 +199,29 @@
         <button data-k="recon" class="on">Reconstruction</button>
         <button data-k="edit">Editing</button>
       </div>
-      <div class="seg small" id="lb-group">
-        <button data-k="all" class="on">All</button>
-        <button data-k="Closed">Closed API</button>
-        <button data-k="Open">Open-weight</button>
-        <button data-k="Diffusion">Diffusion</button>
-      </div>
     </div>
+    <div class="chart-card">
+      <h3 class="chart-title" id="bar-title"></h3>
+      <div class="bar-chart" id="bar-chart"></div>
+    </div>
+    <div class="chart-card">
+      <h3 class="chart-title" id="sc-title"></h3>
+      <div class="scatter" id="scatter"></div>
+      <p class="lb-note" id="sc-note"></p>
+    </div>
+    <details class="full-table">
+      <summary>Full results table</summary>
+      <div class="lb-head">
+        <div class="seg small" id="lb-group">
+          <button data-k="all" class="on">All</button>
+          <button data-k="Closed">Closed API</button>
+          <button data-k="Open">Open-weight</button>
+          <button data-k="Diffusion">Diffusion</button>
+        </div>
+      </div>
     <div class="lb-wrap"><table class="lb" id="lb"></table></div>
     <p class="lb-note" id="lb-note"></p>
+    </details>
   </div>
 </section>
 

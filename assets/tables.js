@@ -20,7 +20,8 @@ window.TABLES = {
 79.0,
 80.1,
 88.1
-]
+],
+"cost": 0.2371
 },
 {
 "name": "GPT-6.1 Sol",
@@ -42,7 +43,8 @@ window.TABLES = {
 78.3,
 80.0,
 87.3
-]
+],
+"cost": 0.0479
 },
 {
 "name": "Claude Opus 5.5",
@@ -64,7 +66,8 @@ window.TABLES = {
 75.8,
 78.5,
 87.9
-]
+],
+"cost": 1.4404
 },
 {
 "name": "GPT-6.1 Terra",
@@ -86,7 +89,8 @@ window.TABLES = {
 77.0,
 77.7,
 86.6
-]
+],
+"cost": 0.0232
 },
 {
 "name": "Gemini 4 Argon",
@@ -108,7 +112,8 @@ window.TABLES = {
 71.7,
 73.5,
 81.8
-]
+],
+"cost": 0.2728
 },
 {
 "name": "GPT-5.6 Sol",
@@ -130,7 +135,8 @@ window.TABLES = {
 71.3,
 72.1,
 83.9
-]
+],
+"cost": 0.0532
 },
 {
 "name": "Claude Haiku 5.5",
@@ -152,7 +158,8 @@ window.TABLES = {
 75.2,
 74.5,
 86.8
-]
+],
+"cost": 0.2598
 },
 {
 "name": "Gemini 3.8 Flash",
@@ -174,7 +181,8 @@ window.TABLES = {
 67.6,
 70.2,
 81.4
-]
+],
+"cost": null
 },
 {
 "name": "GPT-6 Luna",
@@ -196,7 +204,8 @@ window.TABLES = {
 70.3,
 71.0,
 81.8
-]
+],
+"cost": 0.003
 },
 {
 "name": "Claude Sonnet 5.5",
@@ -218,7 +227,8 @@ window.TABLES = {
 74.5,
 72.0,
 85.0
-]
+],
+"cost": 0.4172
 },
 {
 "name": "Kimi-K3.1-Pro",
@@ -240,7 +250,8 @@ window.TABLES = {
 69.9,
 70.4,
 79.6
-]
+],
+"cost": 0.2955
 },
 {
 "name": "DeepSeek-V4-Flash",
@@ -262,7 +273,8 @@ window.TABLES = {
 63.2,
 66.9,
 79.8
-]
+],
+"cost": 0.0277
 },
 {
 "name": "MiMo-V2.6-Flash",
@@ -284,7 +296,8 @@ window.TABLES = {
 60.1,
 63.5,
 74.2
-]
+],
+"cost": 0.0226
 },
 {
 "name": "HY4-preview",
@@ -306,7 +319,8 @@ window.TABLES = {
 49.1,
 48.9,
 56.2
-]
+],
+"cost": 0.1338
 },
 {
 "name": "Qwen3.8-27B",
@@ -328,7 +342,8 @@ window.TABLES = {
 61.7,
 61.0,
 73.4
-]
+],
+"cost": null
 },
 {
 "name": "GLM-5.3-Flash",
@@ -350,7 +365,8 @@ window.TABLES = {
 62.4,
 62.3,
 74.8
-]
+],
+"cost": 0.0088
 }
 ],
 "edit": [
@@ -372,7 +388,8 @@ window.TABLES = {
 77.0,
 59.2,
 51.6
-]
+],
+"cost": 0.3472
 },
 {
 "name": "GPT-6.1 Terra",
@@ -392,7 +409,8 @@ window.TABLES = {
 74.0,
 59.2,
 54.1
-]
+],
+"cost": 0.0195
 },
 {
 "name": "Claude Opus 5.5",
@@ -412,7 +430,8 @@ window.TABLES = {
 74.7,
 56.4,
 53.1
-]
+],
+"cost": 0.2967
 },
 {
 "name": "GPT-6.1 Sol",
@@ -432,7 +451,8 @@ window.TABLES = {
 72.1,
 56.8,
 49.4
-]
+],
+"cost": 0.0524
 },
 {
 "name": "Gemini 4 Argon",
@@ -452,7 +472,8 @@ window.TABLES = {
 66.5,
 58.4,
 52.1
-]
+],
+"cost": 0.4532
 },
 {
 "name": "Claude Haiku 5.5",
@@ -472,7 +493,8 @@ window.TABLES = {
 64.9,
 51.5,
 49.9
-]
+],
+"cost": 0.012
 },
 {
 "name": "GPT-5.6 Sol",
@@ -492,7 +514,8 @@ window.TABLES = {
 63.8,
 53.4,
 48.1
-]
+],
+"cost": 0.0427
 },
 {
 "name": "Claude Sonnet 5.5",
@@ -512,7 +535,8 @@ window.TABLES = {
 66.1,
 50.2,
 46.3
-]
+],
+"cost": 0.1258
 },
 {
 "name": "Gemini 3.8 Flash",
@@ -532,7 +556,8 @@ window.TABLES = {
 59.1,
 51.2,
 47.2
-]
+],
+"cost": null
 },
 {
 "name": "GPT-6 Luna",
@@ -552,7 +577,8 @@ window.TABLES = {
 54.5,
 52.7,
 46.3
-]
+],
+"cost": 0.0029
 },
 {
 "name": "DeepSeek-V4-Flash",
@@ -572,7 +598,8 @@ window.TABLES = {
 61.6,
 46.3,
 46.5
-]
+],
+"cost": 0.0179
 },
 {
 "name": "Kimi-K3.1-Pro",
@@ -592,7 +619,8 @@ window.TABLES = {
 55.5,
 51.0,
 45.6
-]
+],
+"cost": 0.1361
 },
 {
 "name": "MiMo-V2.6-Flash",
@@ -612,7 +640,8 @@ window.TABLES = {
 52.0,
 42.3,
 41.4
-]
+],
+"cost": 0.0079
 },
 {
 "name": "Qwen3.8-27B",
@@ -632,7 +661,8 @@ window.TABLES = {
 48.5,
 42.3,
 39.8
-]
+],
+"cost": null
 },
 {
 "name": "HY4-preview",
@@ -652,7 +682,8 @@ window.TABLES = {
 49.5,
 30.9,
 32.2
-]
+],
+"cost": 0.095
 },
 {
 "name": "GLM-5.3-Flash",
@@ -672,7 +703,8 @@ window.TABLES = {
 48.1,
 44.1,
 38.3
-]
+],
+"cost": 0.0052
 },
 {
 "name": "MiniMax-H3",
@@ -692,7 +724,8 @@ window.TABLES = {
 56.4,
 66.7,
 53.9
-]
+],
+"cost": null
 },
 {
 "name": "Wan2.1-VACE-1.3B",
@@ -712,7 +745,8 @@ window.TABLES = {
 22.0,
 47.8,
 25.1
-]
+],
+"cost": null
 }
 ]
 };

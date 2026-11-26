@@ -174,8 +174,9 @@
   })();
 
   /* ---------- leaderboard ---------- */
-  var VENDOR = [[/^GPT/, '#10a37f'], [/^Claude/, '#d97757'], [/^Gemini/, '#4285f4'], [/^Kimi/, '#1a1a1a'], [/^DeepSeek/, '#4d6bfe'],
-    [/^MiMo/, '#ff6900'], [/^HY/, '#2f6cf6'], [/^Qwen/, '#615ced'], [/^GLM/, '#3859ff'], [/^MiniMax/, '#e2167e'], [/^Wan/, '#7a4bff']];
+  var VENDOR = [[/^GPT/, '#202124', 'openai'], [/^Claude/, '#c8775c', 'claude'], [/^Gemini/, '#2f9e55', 'gemini'], [/^Kimi/, '#1677ff', 'kimi'], [/^DeepSeek/, '#3b4fe0', 'deepseek'],
+    [/^MiMo/, '#ff6a14', 'mimo'], [/^HY/, '#14a3c7', 'hunyuan'], [/^Qwen/, '#7b61ff', 'qwen'], [/^GLM/, '#2b6cf6', 'glm'], [/^MiniMax/, '#e2167e', 'minimax'], [/^Wan/, '#8b5cf6', 'wan']];
+  var vlogo = function (n) { for (var i = 0; i < VENDOR.length; i++) if (VENDOR[i][0].test(n)) return 'static/logos/' + VENDOR[i][2] + '.svg'; return ''; };
   var vcol = function (n) { for (var i = 0; i < VENDOR.length; i++) if (VENDOR[i][0].test(n)) return VENDOR[i][1]; return '#999'; };
   var SPEC = {
     recon: {
@@ -226,11 +227,60 @@
   }
   lb.sort = 'rank';
   $('#lb-stage').querySelectorAll('button').forEach(function (b) {
-    b.onclick = function () { $('#lb-stage').querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); }); lb.stage = b.dataset.k; if (lb.stage === 'recon' && lb.group === 'Diffusion') { lb.group = 'all'; syncGroupBtns(); } renderLB(); };
+    b.onclick = function () { $('#lb-stage').querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); }); lb.stage = b.dataset.k; if (lb.stage === 'recon' && lb.group === 'Diffusion') { lb.group = 'all'; syncGroupBtns(); } renderLB(); renderCharts(); };
   });
   function syncGroupBtns() { $('#lb-group').querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.dataset.k === lb.group); }); }
   $('#lb-group').querySelectorAll('button').forEach(function (b) { b.onclick = function () { lb.group = b.dataset.k; syncGroupBtns(); renderLB(); }; });
   renderLB();
+
+  /* ---------- charts: sorted bar chart + score vs cost scatter ---------- */
+  function renderCharts() {
+    var st = lb.stage, rows = TABLES[st].slice().sort(function (a, b) { return b.v[0] - a.v[0]; });
+    var lab = st === 'recon' ? 'Reconstruction score S<sub>recon</sub>' : 'Editing score S<sub>edit</sub>';
+    $('#bar-title').innerHTML = lab;
+    var max = Math.ceil(rows[0].v[0] / 10) * 10 + 10, h = '';
+    h += '<div class="bars">';
+    [0, 20, 40, 60, 80].forEach(function (g) { if (g < max) h += '<i class="grid" style="top:' + (300 * (1 - g / max)).toFixed(1) + 'px"><em>' + g + '</em></i>'; });
+    rows.forEach(function (r) {
+      var c = vcol(r.name), diff = r.rank == null;
+      h += '<div class="bcol' + (diff ? ' diff' : '') + '" title="' + esc(r.name) + ': ' + r.v[0].toFixed(1) + '">' +
+        '<div class="bwrap"><div class="bar" style="height:' + (100 * r.v[0] / max).toFixed(1) + '%;background:' + c + '"><span>' + Math.round(r.v[0]) + '</span></div></div>' +
+        '<div class="blogo"><img alt="" src="' + vlogo(r.name) + '"></div>' +
+        '<div class="bname"><span>' + esc(r.name) + (diff ? ' †' : '') + '</span></div></div>';
+    });
+    h += '</div>';
+    $('#bar-chart').innerHTML = h;
+
+    // scatter
+    $('#sc-title').innerHTML = lab + ' vs. API cost per task';
+    var pts = rows.filter(function (r) { return r.cost; });
+    var W = 1080, H = 470, m = { l: 56, r: 30, t: 20, b: 58 };
+    var xs = [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3], lx = function (x) { return Math.log10(x); };
+    var x0 = lx(0.001), x1 = lx(3), X = function (x) { return m.l + (lx(x) - x0) / (x1 - x0) * (W - m.l - m.r); };
+    var y0 = 10, y1 = Math.ceil((rows[0].v[0] + 6) / 10) * 10, Y = function (y) { return m.t + (1 - (y - y0) / (y1 - y0)) * (H - m.t - m.b); };
+    var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Score versus cost">';
+    for (var g = y0; g <= y1; g += 10) svg += '<line class="g" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(g) + '" y2="' + Y(g) + '"/><text class="ax" x="' + (m.l - 10) + '" y="' + (Y(g) + 4) + '" text-anchor="end">' + g + '</text>';
+    xs.forEach(function (x) { svg += '<line class="g" x1="' + X(x) + '" x2="' + X(x) + '" y1="' + m.t + '" y2="' + (H - m.b) + '"/><text class="ax" x="' + X(x) + '" y="' + (H - m.b + 22) + '" text-anchor="middle">$' + x + '</text>'; });
+    svg += '<text class="axt" x="' + ((W + m.l) / 2) + '" y="' + (H - 10) + '" text-anchor="middle">API cost per task in US$, mean, log scale</text>';
+    // labels: place right of the point, flip left near the right edge, nudge apart vertically
+    var L = pts.map(function (r) { var px = X(r.cost), py = Y(r.v[0]), right = px < W - 210; return { r: r, px: px, py: py, right: right, ly: py + 5 }; });
+    L.sort(function (a, b) { return a.py - b.py; });
+    for (var k = 0; k < L.length; k++) for (var j = 0; j < k; j++) {
+      var A = L[j], B = L[k];
+      if (Math.abs(A.px - B.px) < 190 && A.right === B.right && Math.abs(A.ly - B.ly) < 17) B.ly = A.ly + 17;
+    }
+    L.forEach(function (o) {
+      var c = vcol(o.r.name);
+      svg += '<circle cx="' + o.px + '" cy="' + o.py + '" r="7" fill="' + c + '"/>';
+      svg += '<text class="pl" x="' + (o.px + (o.right ? 12 : -12)) + '" y="' + o.ly + '" text-anchor="' + (o.right ? 'start' : 'end') + '" fill="' + c + '">' + esc(o.r.name) + '</text>';
+    });
+    svg += '</svg>';
+    $('#scatter').innerHTML = svg;
+    var miss = rows.filter(function (r) { return !r.cost; }).map(function (r) { return r.name; });
+    $('#sc-note').innerHTML = 'Cost is the mean API spend per task in our runs. Not shown: ' + miss.join(', ') + ' (no API cost: run locally, not logged, or diffusion models).' +
+      (st === 'edit' ? ' † Diffusion video editors edit pixels and are not ranked.' : '');
+  }
+  renderCharts();
 
   /* ---------- bibtex ---------- */
   $('#copy-bib').onclick = function () {
