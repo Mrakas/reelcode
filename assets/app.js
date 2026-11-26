@@ -212,7 +212,7 @@
     sorted.forEach(function (r) {
       if (showGroups && r.group !== lastG) { h += '<tr class="grp"><td colspan="' + (ncol + 2) + '">' + r.group + '</td></tr>'; lastG = r.group; }
       var rk = r.rank == null ? '–' : (r.rank <= 3 ? '<span class="medal m' + r.rank + '">' + r.rank + '</span>' : r.rank);
-      h += '<tr><td class="rk">' + rk + '</td><td class="l name"><span class="dot" style="background:' + vcol(r.name) + '"></span>' + esc(r.name) + (r.note ? ' §' : '') + (r.new ? ' <b class="newtag">new</b>' : '') + (r.rank == null ? ' <small style="color:#999;font-weight:400">(diffusion)</small>' : '') + '</td>';
+      h += '<tr><td class="rk">' + rk + '</td><td class="l name"><span class="dot" style="background:' + vcol(r.name) + '"></span>' + esc(r.name) + (r.note ? ' §' : '') + (r.rank == null ? ' <small style="color:#999;font-weight:400">(diffusion)</small>' : '') + '</td>';
       h += '<td class="l main"><div class="bar"><b>' + r.v[0].toFixed(1) + '</b><i style="width:' + (72 * r.v[0] / maxMain).toFixed(1) + 'px"></i></div></td>';
       for (var k = 1; k < ncol; k++) h += '<td class="' + (r.rank != null && r.v[k] === best[k] ? 'best' : '') + '">' + r.v[k].toFixed(1) + '</td>';
       h += '</tr>';
@@ -246,7 +246,7 @@
       h += '<div class="bcol' + (diff ? ' diff' : '') + '" title="' + esc(r.name) + ': ' + r.v[0].toFixed(1) + '">' +
         '<div class="bwrap"><div class="bar" style="height:' + (100 * r.v[0] / max).toFixed(1) + '%;background:' + c + '"><span>' + Math.round(r.v[0]) + '</span></div></div>' +
         '<div class="blogo"><img alt="" src="' + vlogo(r.name) + '"></div>' +
-        '<div class="bname"><span>' + esc(r.name) + (diff ? ' †' : '') + (r.note ? ' §' : '') + (r.new ? ' <b class="newtag">new</b>' : '') + '</span></div></div>';
+        '<div class="bname"><span>' + esc(r.name) + (diff ? ' †' : '') + (r.note ? ' §' : '') + '</span></div></div>';
     });
     h += '</div>';
     $('#bar-chart').innerHTML = h;
@@ -278,8 +278,7 @@
     $('#scatter').innerHTML = svg;
     var miss = rows.filter(function (r) { return !r.cost; }).map(function (r) { return r.name; });
     var newOnes = rows.filter(function (r) { return r.new; }).map(function (r) { return r.name; });
-    $('#bar-note').innerHTML = (newOnes.length ? '<b class="newtag">new</b> Added after the paper, same protocol: ' + newOnes.join(', ') + '. ' : '') +
-      rows.filter(function (r) { return r.note; }).map(function (r) { return '§ ' + esc(r.note); }).join(' ') + (st === 'edit' ? ' † Diffusion video editors edit pixels and are not ranked.' : '');
+    $('#bar-note').innerHTML = rows.filter(function (r) { return r.note; }).map(function (r) { return '§ ' + esc(r.note); }).join(' ') + (st === 'edit' ? ' † Diffusion video editors edit pixels and are not ranked.' : '');
     $('#sc-note').innerHTML = 'Cost is the mean API spend per task in our runs. Not shown: ' + miss.join(', ') + ' (run locally, cost not logged yet, or diffusion models).';
   }
   renderCharts();
