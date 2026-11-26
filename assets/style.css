@@ -235,3 +235,62 @@ h3 { font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
   .chip { padding: 4px; }
 }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+/* edit grid: reference + 3 editors, before/after rows */
+.edit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.eg-head { font: 600 14px var(--sans); color: var(--ink); padding: 0 2px; display: flex; align-items: flex-end; }
+.eg-head.refh { color: var(--accent); }
+.edit-grid .tile .lab { font-size: 11.5px; padding: 3px 9px; }
+.edit-grid .tile.before .lab { background: rgba(10,11,14,.6); }
+.eg-instr { background: var(--bg); border-radius: 12px; border-left: 3px solid var(--accent); padding: 12px 14px; font-size: 13.5px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; overflow: auto; }
+.eg-instr .axes { flex-direction: row; justify-content: flex-start; gap: 4px; }
+.eg-instr .lab2 { margin: 2px 0 0; font: 500 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.eg-instr .txt { margin: 0; line-height: 1.45; }
+.reroll { margin-top: auto; align-self: flex-start; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 5px 12px; font: 500 12.5px var(--sans); color: var(--ink-2); cursor: pointer; }
+.reroll:hover { border-color: var(--ink-3); color: var(--ink); }
+
+/* guess game */
+.guess { margin-top: 56px; background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: 18px; padding: 26px; }
+.guess-head { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 18px; }
+.guess-head h3 { font-size: 24px; color: #fff; margin: 0 0 6px; letter-spacing: -.02em; }
+.guess-head .kicker { margin-bottom: 10px; }
+.guess-sub { margin: 0; color: var(--dark-ink-2); font-size: 15px; max-width: 640px; }
+.guess-score { text-align: right; color: var(--dark-ink-2); font-size: 12.5px; min-width: 120px; }
+.guess-score b { display: block; font: 600 30px var(--sans); color: #fff; letter-spacing: -.03em; }
+.guess-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.guess .tile .vbox { box-shadow: none; outline: 1px solid var(--dark-line); }
+.guess .tile.ref .vbox { outline: 2px solid var(--accent); }
+.tile.pick { border: 0; padding: 0; background: none; cursor: pointer; text-align: left; font: inherit; color: inherit; }
+.tile.pick .vbox { transition: outline-color .15s, transform .15s; }
+.tile.pick:not(:disabled):hover .vbox { outline: 2px solid #fff; transform: translateY(-2px); }
+.tile.pick .lab { font-weight: 700; font-size: 13px; padding: 4px 12px; }
+.tile.pick:disabled { cursor: default; }
+.tile.pick.win .vbox { outline: 3px solid #2fbf71; }
+.tile.pick.lose .vbox { outline: 2px solid #5a5e69; opacity: .85; }
+.tile.pick.chosen .lab { background: #fff; color: var(--ink); }
+.reveal-tag { display: block; min-height: 40px; margin-top: 10px; color: var(--dark-ink); font-size: 13.5px; }
+.reveal-tag b { display: block; color: #fff; font-size: 15px; }
+.reveal-tag span { color: var(--dark-ink-2); }
+.tile.pick.win .reveal-tag span { color: #6fe0a3; }
+.guess-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap; }
+.guess-msg { margin: 0; color: var(--dark-ink); font-size: 15px; }
+.guess-msg .ok { color: #6fe0a3; } .guess-msg .no { color: #ffb08c; }
+.guess-next { visibility: hidden; border: 0; background: #fff; color: var(--ink); border-radius: 999px; padding: 9px 18px; font: 600 14px var(--sans); cursor: pointer; }
+.guess-next.show { visibility: visible; }
+
+@media (max-width: 980px) {
+  .edit-grid { grid-template-columns: repeat(2, 1fr); }
+  .eg-head { display: none; }
+  .edit-grid .tile.before .lab::after, .edit-grid .tile.after .lab::after { content: " · " attr(data-m); }
+}
+@media (max-width: 640px) {
+  .guess { padding: 16px; }
+  .guess-grid { grid-template-columns: 1fr 1fr; }
+  .guess-grid .tile.ref { grid-column: 1 / -1; }
+  .guess-head { flex-direction: column; }
+  .guess-score { text-align: left; }
+}
+@media (max-width: 980px) {
+  .eg-instr { grid-column: 1 / -1; order: -1; }
+  .edit-grid .tile .lab { max-width: calc(100% - 20px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
+}

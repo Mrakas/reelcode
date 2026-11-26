@@ -162,6 +162,26 @@
     <div class="chips" id="recon-tabs"></div>
     <div class="gallery" id="recon-grid"></div>
     <div class="vctl" data-for="recon-grid"></div>
+
+    <div class="guess" id="guess">
+      <div class="guess-head">
+        <div>
+          <p class="kicker">Your turn</p>
+          <h3>Which reconstruction is closer to the reference?</h3>
+          <p class="guess-sub">Two models rebuilt the same clip. Pick the one you think is better, then see which models they were and how the judges scored them.</p>
+        </div>
+        <div class="guess-score" id="guess-score"></div>
+      </div>
+      <div class="guess-grid">
+        <div class="tile ref"><div class="vbox"><video muted loop playsinline preload="none" id="g-ref"></video></div><span class="lab">Reference</span></div>
+        <button class="tile pick" id="g-left" data-side="0"><div class="vbox"><video muted loop playsinline preload="none"></video></div><span class="lab">A</span><span class="reveal-tag"></span></button>
+        <button class="tile pick" id="g-right" data-side="1"><div class="vbox"><video muted loop playsinline preload="none"></video></div><span class="lab">B</span><span class="reveal-tag"></span></button>
+      </div>
+      <div class="guess-foot">
+        <p class="guess-msg" id="guess-msg">Click A or B.</p>
+        <button class="guess-next" id="guess-next">Next pair →</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -170,11 +190,9 @@
   <div class="wrap">
     <p class="kicker">Results · Stage 2</p>
     <h2>Editing: change what was asked, keep everything else.</h2>
-    <p class="lede">The same model edits its own reconstruction. Compare its video before and after the edit, and switch between models.</p>
+    <p class="lede">Each model edits its own reconstruction. Three editors are drawn at random for every case: the top row is before the edit, the bottom row after.</p>
     <div class="chips" id="edit-tabs"></div>
     <div class="editcase">
-      <div class="instrbar"><div class="axes" id="edit-axes"></div><blockquote class="instr" id="edit-instr"></blockquote></div>
-      <div class="models" id="edit-models"></div>
       <div class="edit-grid" id="edit-grid"></div>
       <div class="vctl" data-for="edit-grid"></div>
     </div>
@@ -247,6 +265,7 @@
 
 <script src="assets/cases.js"></script>
 <script src="assets/tables.js"></script>
+<script src="assets/guess.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

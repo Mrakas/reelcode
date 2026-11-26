@@ -99,27 +99,32 @@
   });
   showRecon(0);
 
-  /* ---------- edit gallery ---------- */
-  var egrid = $('#edit-grid'), etabs = $('#edit-tabs'), emods = $('#edit-models');
+  /* ---------- edit gallery: reference + 3 random editors, before/after ---------- */
+  var egrid = $('#edit-grid'), etabs = $('#edit-tabs');
   var egroup = new Group(egrid, $('.vctl[data-for="edit-grid"]'));
   var cur = 0;
-  function showEditModel(k) {
-    var c = CASES.edit[cur], r = c.runs[k]; if (!r) return;
-    emods.querySelectorAll('.mbtn').forEach(function (b, j) { b.classList.toggle('on', j === k); });
-    egrid.innerHTML = '';
-    egrid.appendChild(videoTile(c.ref, 'Reference', 'ref'));
-    egrid.appendChild(videoTile(r.before, 'Before edit · ' + r.model, 'before'));
-    egrid.appendChild(videoTile(r.after, 'After edit · ' + r.model, 'after'));
-    egroup.paused = false; egroup.sync();
-  }
+  function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function headCell(html, cls) { return el('div', 'eg-head' + (cls ? ' ' + cls : ''), html); }
   function showEdit(i) {
     cur = i; var c = CASES.edit[i];
     etabs.querySelectorAll('.chip').forEach(function (b, j) { b.classList.toggle('on', i === j); });
-    $('#edit-instr').textContent = c.instruction;
-    $('#edit-axes').innerHTML = c.tags.map(function (t) { return '<span class="ax-tag ax-' + t + '">' + t + '</span>'; }).join('');
-    emods.innerHTML = '';
-    c.runs.forEach(function (r, k) { var b = el('button', 'mbtn', esc(r.model)); b.onclick = function () { showEditModel(k); }; emods.appendChild(b); });
-    showEditModel(0);
+    var runs = shuffle(c.runs).slice(0, 3);
+    egrid.innerHTML = '';
+    // header row
+    egrid.appendChild(headCell('<span>Reference</span>', 'refh'));
+    runs.forEach(function (r) { egrid.appendChild(headCell('<span>' + esc(r.model) + '</span>')); });
+    // before row
+    egrid.appendChild(videoTile(c.ref, 'Reference', 'ref'));
+    runs.forEach(function (r) { var t = videoTile(r.before, 'Before', 'before'); t.querySelector('.lab').dataset.m = r.model; egrid.appendChild(t); });
+    // after row: instruction card + edited videos
+    var card = el('div', 'eg-instr');
+    card.innerHTML = '<div class="axes">' + c.tags.map(function (t) { return '<span class="ax-tag ax-' + t + '">' + t + '</span>'; }).join('') + '</div>' +
+      '<p class="lab2">Edit instruction</p><p class="txt">' + esc(c.instruction) + '</p>' +
+      (c.runs.length > 3 ? '<button class="reroll" type="button">↻ Draw other editors</button>' : '');
+    egrid.appendChild(card);
+    runs.forEach(function (r) { var t = videoTile(r.after, 'After', 'after'); t.querySelector('.lab').dataset.m = r.model; egrid.appendChild(t); });
+    var rr = card.querySelector('.reroll'); if (rr) rr.onclick = function () { showEdit(cur); };
+    egroup.paused = false; egroup.sync();
   }
   CASES.edit.forEach(function (c, i) {
     var b = el('button', 'chip', '<img alt="" loading="lazy" src="' + c.ref + '.jpg"><span>' + esc(c.short) + '</span><i class="dots">' + c.tags.map(function (t) { return '<b class="ax-' + t + '"></b>'; }).join('') + '</i>');
@@ -127,6 +132,46 @@
     etabs.appendChild(b);
   });
   if (CASES.edit.length) showEdit(0);
+
+  /* ---------- guess game: blind A/B, then reveal judge scores ---------- */
+  (function () {
+    var G = window.GUESS || [], box = $('#guess'); if (!box || !G.length) return;
+    var store = { get: function (k, d) { try { return JSON.parse(localStorage.getItem(k)) || d; } catch (e) { return d; } }, set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} } };
+    var tally = store.get('rcb-guess', { n: 0, agree: 0 });
+    var order = shuffle(G.map(function (_, k) { return k; })), pos = 0, cur = null, flip = false, done = false;
+    var L = $('#g-left'), Rt = $('#g-right'), ref = $('#g-ref'), msg = $('#guess-msg'), nxt = $('#guess-next'), sc = $('#guess-score');
+    var gg = new Group(box.querySelector('.guess-grid'), null);
+    function setV(v, src) { v.removeAttribute('src'); v.dataset.src = src + '.mp4'; v.poster = src + '.jpg'; }
+    function score() { sc.innerHTML = tally.n ? '<b>' + tally.agree + '/' + tally.n + '</b><span>agreed with the judges</span>' : ''; }
+    function load() {
+      cur = G[order[pos % order.length]]; flip = Math.random() < 0.5; done = false;
+      var A = flip ? cur.b : cur.a, B = flip ? cur.a : cur.b;
+      setV(ref, cur.ref); setV(L.querySelector('video'), A.src); setV(Rt.querySelector('video'), B.src);
+      [L, Rt].forEach(function (b) { b.classList.remove('win', 'lose', 'chosen'); b.disabled = false; b.querySelector('.reveal-tag').innerHTML = ''; });
+      msg.textContent = 'Which one is closer to the reference? Click A or B.'; nxt.classList.remove('show');
+      gg.paused = false; gg.sync();
+    }
+    function pick(side) {
+      if (done) return; done = true;
+      var A = flip ? cur.b : cur.a, B = flip ? cur.a : cur.b, mine = side === 0 ? A : B, other = side === 0 ? B : A;
+      var judgeSide = A.score >= B.score ? 0 : 1, agree = side === judgeSide;
+      [[L, A, 0], [Rt, B, 1]].forEach(function (x) {
+        x[0].disabled = true; x[0].classList.add(x[2] === judgeSide ? 'win' : 'lose'); if (x[2] === side) x[0].classList.add('chosen');
+        x[0].querySelector('.reveal-tag').innerHTML = '<b>' + esc(x[1].model) + '</b><span>S<sub>recon</sub> ' + x[1].score.toFixed(1) + (x[2] === judgeSide ? ' · judges’ pick' : '') + '</span>';
+      });
+      var win = judgeSide === 0 ? A : B;
+      msg.innerHTML = (agree ? '<b class="ok">You agree with the judges.</b> ' : '<b class="no">The judges picked the other one.</b> ') +
+        esc(win.model) + ' scored higher (' + Math.max(A.score, B.score).toFixed(1) + ' vs ' + Math.min(A.score, B.score).toFixed(1) + ').';
+      tally.n++; if (agree) tally.agree++; store.set('rcb-guess', tally); score();
+      nxt.classList.add('show');
+      if (window.RCB_VOTE_ENDPOINT) {   // optional: send the vote to a collector (not configured by default)
+        try { fetch(window.RCB_VOTE_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ clip: cur.case, chosen: mine.model, other: other.model, chosen_score: mine.score, other_score: other.score, agree: agree, t: new Date().toISOString() }) }).catch(function () {}); } catch (e) {}
+      }
+    }
+    L.onclick = function () { pick(0); }; Rt.onclick = function () { pick(1); };
+    nxt.onclick = function () { pos++; load(); };
+    score(); load();
+  })();
 
   /* ---------- leaderboard ---------- */
   var VENDOR = [[/^GPT/, '#10a37f'], [/^Claude/, '#d97757'], [/^Gemini/, '#4285f4'], [/^Kimi/, '#1a1a1a'], [/^DeepSeek/, '#4d6bfe'],

@@ -323,6 +323,11 @@ window.CASES = {
      "model": "DeepSeek-V4-Flash",
      "before": "static/videos/e_dark-keynote_dsflash_b",
      "after": "static/videos/e_dark-keynote_dsflash_a"
+    },
+    {
+     "model": "GPT-6.1 Sol",
+     "before": "static/videos/e_dark-keynote_sol_b",
+     "after": "static/videos/e_dark-keynote_sol_a"
     }
    ]
   },
@@ -354,6 +359,11 @@ window.CASES = {
      "model": "DeepSeek-V4-Flash",
      "before": "static/videos/e_L1047842_dsflash_b",
      "after": "static/videos/e_L1047842_dsflash_a"
+    },
+    {
+     "model": "Claude Sonnet 5.5",
+     "before": "static/videos/e_L1047842_sonnet_b",
+     "after": "static/videos/e_L1047842_sonnet_a"
     }
    ]
   },
@@ -385,6 +395,11 @@ window.CASES = {
      "model": "Claude Sonnet 5.5",
      "before": "static/videos/e_L47500_sonnet_b",
      "after": "static/videos/e_L47500_sonnet_a"
+    },
+    {
+     "model": "DeepSeek-V4-Flash",
+     "before": "static/videos/e_L47500_dsflash_b",
+     "after": "static/videos/e_L47500_dsflash_a"
     }
    ]
   },
@@ -417,6 +432,11 @@ window.CASES = {
      "model": "Claude Sonnet 5.5",
      "before": "static/videos/e_htmlm2_0009_sonnet_b",
      "after": "static/videos/e_htmlm2_0009_sonnet_a"
+    },
+    {
+     "model": "DeepSeek-V4-Flash",
+     "before": "static/videos/e_htmlm2_0009_dsflash_b",
+     "after": "static/videos/e_htmlm2_0009_dsflash_a"
     }
    ]
   },
@@ -449,6 +469,16 @@ window.CASES = {
      "model": "Claude Opus 5.5",
      "before": "static/videos/e_impasto_opus_b",
      "after": "static/videos/e_impasto_opus_a"
+    },
+    {
+     "model": "DeepSeek-V4-Flash",
+     "before": "static/videos/e_impasto_dsflash_b",
+     "after": "static/videos/e_impasto_dsflash_a"
+    },
+    {
+     "model": "Claude Sonnet 5.5",
+     "before": "static/videos/e_impasto_sonnet_b",
+     "after": "static/videos/e_impasto_sonnet_a"
     }
    ]
   },
@@ -480,6 +510,11 @@ window.CASES = {
      "model": "Claude Opus 5.5",
      "before": "static/videos/e_rubber-hose_opus_b",
      "after": "static/videos/e_rubber-hose_opus_a"
+    },
+    {
+     "model": "DeepSeek-V4-Flash",
+     "before": "static/videos/e_rubber-hose_dsflash_b",
+     "after": "static/videos/e_rubber-hose_dsflash_a"
     }
    ]
   },
@@ -512,6 +547,11 @@ window.CASES = {
      "model": "Claude Opus 5.5",
      "before": "static/videos/e_svg2_0011_opus_b",
      "after": "static/videos/e_svg2_0011_opus_a"
+    },
+    {
+     "model": "Claude Sonnet 5.5",
+     "before": "static/videos/e_svg2_0011_sonnet_b",
+     "after": "static/videos/e_svg2_0011_sonnet_a"
     }
    ]
   },
@@ -545,6 +585,16 @@ window.CASES = {
      "model": "Claude Opus 5.5",
      "before": "static/videos/e_hologram-hud_opus_b",
      "after": "static/videos/e_hologram-hud_opus_a"
+    },
+    {
+     "model": "DeepSeek-V4-Flash",
+     "before": "static/videos/e_hologram-hud_dsflash_b",
+     "after": "static/videos/e_hologram-hud_dsflash_a"
+    },
+    {
+     "model": "Claude Sonnet 5.5",
+     "before": "static/videos/e_hologram-hud_sonnet_b",
+     "after": "static/videos/e_hologram-hud_sonnet_a"
     }
    ]
   }
