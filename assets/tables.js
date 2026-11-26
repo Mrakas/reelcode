@@ -254,7 +254,7 @@ window.TABLES = {
 "cost": 0.2955
 },
 {
-"name": "DeepSeek-V4-Flash",
+"name": "DeepSeek-V4.1-Flash (1017)",
 "group": "Open-weight Models",
 "rank": 15,
 "v": [
@@ -681,7 +681,7 @@ window.TABLES = {
 "cost": 0.0029
 },
 {
-"name": "DeepSeek-V4-Flash",
+"name": "DeepSeek-V4.1-Flash (1017)",
 "group": "Open-weight Models",
 "rank": 13,
 "v": [

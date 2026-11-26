@@ -24,7 +24,7 @@ window.CASES = {
      "src": "static/videos/r_swiss-motion_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_swiss-motion_dsflash"
     },
     {
@@ -57,7 +57,7 @@ window.CASES = {
      "src": "static/videos/r_engraving_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_engraving_dsflash"
     },
     {
@@ -90,7 +90,7 @@ window.CASES = {
      "src": "static/videos/r_rubber-hose_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_rubber-hose_dsflash"
     },
     {
@@ -123,7 +123,7 @@ window.CASES = {
      "src": "static/videos/r_hologram-hud_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_hologram-hud_dsflash"
     },
     {
@@ -152,7 +152,7 @@ window.CASES = {
      "src": "static/videos/r_scifi-toon_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_scifi-toon_dsflash"
     },
     {
@@ -185,7 +185,7 @@ window.CASES = {
      "src": "static/videos/r_whiteboard_p1_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_whiteboard_p1_dsflash"
     },
     {
@@ -218,7 +218,7 @@ window.CASES = {
      "src": "static/videos/r_three_0004_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_three_0004_dsflash"
     },
     {
@@ -251,7 +251,7 @@ window.CASES = {
      "src": "static/videos/r_svg2_0004_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_svg2_0004_dsflash"
     },
     {
@@ -284,7 +284,7 @@ window.CASES = {
      "src": "static/videos/r_L99583_opus"
     },
     {
-     "label": "DeepSeek-V4-Flash",
+     "label": "DeepSeek-V4.1-Flash (1017)",
      "src": "static/videos/r_L99583_dsflash"
     },
     {
@@ -320,7 +320,7 @@ window.CASES = {
      "after": "static/videos/e_dark-keynote_sonnet_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_dark-keynote_dsflash_b",
      "after": "static/videos/e_dark-keynote_dsflash_a"
     },
@@ -356,7 +356,7 @@ window.CASES = {
      "after": "static/videos/e_L1047842_opus_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_L1047842_dsflash_b",
      "after": "static/videos/e_L1047842_dsflash_a"
     },
@@ -397,7 +397,7 @@ window.CASES = {
      "after": "static/videos/e_L47500_sonnet_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_L47500_dsflash_b",
      "after": "static/videos/e_L47500_dsflash_a"
     }
@@ -434,7 +434,7 @@ window.CASES = {
      "after": "static/videos/e_htmlm2_0009_sonnet_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_htmlm2_0009_dsflash_b",
      "after": "static/videos/e_htmlm2_0009_dsflash_a"
     }
@@ -471,7 +471,7 @@ window.CASES = {
      "after": "static/videos/e_impasto_opus_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_impasto_dsflash_b",
      "after": "static/videos/e_impasto_dsflash_a"
     },
@@ -512,7 +512,7 @@ window.CASES = {
      "after": "static/videos/e_rubber-hose_opus_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_rubber-hose_dsflash_b",
      "after": "static/videos/e_rubber-hose_dsflash_a"
     }
@@ -539,7 +539,7 @@ window.CASES = {
      "after": "static/videos/e_svg2_0011_sol_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_svg2_0011_dsflash_b",
      "after": "static/videos/e_svg2_0011_dsflash_a"
     },
@@ -587,7 +587,7 @@ window.CASES = {
      "after": "static/videos/e_hologram-hud_opus_a"
     },
     {
-     "model": "DeepSeek-V4-Flash",
+     "model": "DeepSeek-V4.1-Flash (1017)",
      "before": "static/videos/e_hologram-hud_dsflash_b",
      "after": "static/videos/e_hologram-hud_dsflash_a"
     },

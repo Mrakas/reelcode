@@ -227,7 +227,7 @@ window.GUESS = [
 "case": "three_0004",
 "ref": "static/videos/g/three_0004_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 26.3,
 "src": "static/videos/g/three_0004_DeepSeekV4Flash"
 },
@@ -255,7 +255,7 @@ window.GUESS = [
 "case": "L1521748",
 "ref": "static/videos/g/L1521748_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 21.9,
 "src": "static/videos/g/L1521748_DeepSeekV4Flash"
 },
@@ -297,7 +297,7 @@ window.GUESS = [
 "case": "L14344",
 "ref": "static/videos/g/L14344_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 16.5,
 "src": "static/videos/g/L14344_DeepSeekV4Flash"
 },
@@ -386,7 +386,7 @@ window.GUESS = [
 "src": "static/videos/g/rubber-hose_Gemini38Flash"
 },
 "b": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 27.7,
 "src": "static/videos/g/rubber-hose_DeepSeekV4Flash"
 }
@@ -409,7 +409,7 @@ window.GUESS = [
 "case": "UmsdYA0780A",
 "ref": "static/videos/g/UmsdYA0780A_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 21.2,
 "src": "static/videos/g/UmsdYA0780A_DeepSeekV4Flash"
 },
@@ -540,7 +540,7 @@ window.GUESS = [
 "src": "static/videos/g/_F7Z7TTM6uc_ClaudeHaiku55"
 },
 "b": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 56.5,
 "src": "static/videos/g/_F7Z7TTM6uc_DeepSeekV4Flash"
 }
@@ -591,7 +591,7 @@ window.GUESS = [
 "case": "canvas_0002",
 "ref": "static/videos/g/canvas_0002_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 29.0,
 "src": "static/videos/g/canvas_0002_DeepSeekV4Flash"
 },
@@ -974,7 +974,7 @@ window.GUESS = [
 "src": "static/videos/g/L121211_ClaudeOpus55"
 },
 "b": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 60.1,
 "src": "static/videos/g/L121211_DeepSeekV4Flash"
 }
@@ -983,7 +983,7 @@ window.GUESS = [
 "case": "dataviz2_0002",
 "ref": "static/videos/g/dataviz2_0002_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 62.7,
 "src": "static/videos/g/dataviz2_0002_DeepSeekV4Flash"
 },
@@ -1025,7 +1025,7 @@ window.GUESS = [
 "case": "L1514273",
 "ref": "static/videos/g/L1514273_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 31.2,
 "src": "static/videos/g/L1514273_DeepSeekV4Flash"
 },
@@ -1114,7 +1114,7 @@ window.GUESS = [
 "src": "static/videos/g/ksRrhc7Fqr8_GLM53Flash"
 },
 "b": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 61.3,
 "src": "static/videos/g/ksRrhc7Fqr8_DeepSeekV4Flash"
 }
@@ -1137,7 +1137,7 @@ window.GUESS = [
 "case": "L38135",
 "ref": "static/videos/g/L38135_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 37.9,
 "src": "static/videos/g/L38135_DeepSeekV4Flash"
 },
@@ -1221,7 +1221,7 @@ window.GUESS = [
 "case": "dUpOoYDlWFw",
 "ref": "static/videos/g/dUpOoYDlWFw_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 44.2,
 "src": "static/videos/g/dUpOoYDlWFw_DeepSeekV4Flash"
 },
@@ -1235,7 +1235,7 @@ window.GUESS = [
 "case": "FiPkxZWLwsU",
 "ref": "static/videos/g/FiPkxZWLwsU_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 7.8,
 "src": "static/videos/g/FiPkxZWLwsU_DeepSeekV4Flash"
 },
@@ -1305,7 +1305,7 @@ window.GUESS = [
 "case": "L1512930",
 "ref": "static/videos/g/L1512930_ref",
 "a": {
-"model": "DeepSeek-V4-Flash",
+"model": "DeepSeek-V4.1-Flash (1017)",
 "score": 45.5,
 "src": "static/videos/g/L1512930_DeepSeekV4Flash"
 },
