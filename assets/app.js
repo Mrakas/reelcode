@@ -226,8 +226,8 @@
     $('#lb-group').querySelector('[data-k="Diffusion"]').style.display = lb.stage === 'edit' ? '' : 'none';
   }
   lb.sort = 'rank';
-  $('#lb-stage').querySelectorAll('button').forEach(function (b) {
-    b.onclick = function () { $('#lb-stage').querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); }); lb.stage = b.dataset.k; if (lb.stage === 'recon' && lb.group === 'Diffusion') { lb.group = 'all'; syncGroupBtns(); } renderLB(); renderCharts(); };
+  document.querySelectorAll('.lb-stage-btns button').forEach(function (b) {
+    b.onclick = function () { document.querySelectorAll('.lb-stage-btns button').forEach(function (x) { x.classList.toggle('on', x.dataset.k === b.dataset.k); }); lb.stage = b.dataset.k; if (lb.stage === 'recon' && lb.group === 'Diffusion') { lb.group = 'all'; syncGroupBtns(); } renderLB(); renderCharts(); };
   });
   function syncGroupBtns() { $('#lb-group').querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x.dataset.k === lb.group); }); }
   $('#lb-group').querySelectorAll('button').forEach(function (b) { b.onclick = function () { lb.group = b.dataset.k; syncGroupBtns(); renderLB(); }; });
@@ -251,35 +251,63 @@
     h += '</div>';
     $('#bar-chart').innerHTML = h;
 
-    // scatter
+    // scatter: Pareto staircase + vendor logos (paper style)
     $('#sc-title').innerHTML = lab + ' vs. API cost per task';
     var pts = rows.filter(function (r) { return r.cost; });
-    var W = 1080, H = 470, m = { l: 56, r: 30, t: 20, b: 58 };
-    var xs = [0.001, 0.003, 0.01, 0.03, 0.1, 0.3, 1, 3], lx = function (x) { return Math.log10(x); };
-    var x0 = lx(0.001), x1 = lx(3), X = function (x) { return m.l + (lx(x) - x0) / (x1 - x0) * (W - m.l - m.r); };
-    var y0 = 10, y1 = Math.ceil((rows[0].v[0] + 6) / 10) * 10, Y = function (y) { return m.t + (1 - (y - y0) / (y1 - y0)) * (H - m.t - m.b); };
+    var W = 1080, H = 540, m = { l: 56, r: 30, t: 40, b: 58 };
+    var xs = [0.003, 0.01, 0.03, 0.1, 0.3, 1], lx = function (x) { return Math.log10(x); };
+    var cmin = Math.min.apply(null, pts.map(function (r) { return r.cost; })), cmax = Math.max.apply(null, pts.map(function (r) { return r.cost; }));
+    var x0 = lx(cmin) - 0.25, x1 = lx(cmax) + 0.25, X = function (x) { return m.l + (lx(x) - x0) / (x1 - x0) * (W - m.l - m.r); };
+    var smin = Math.min.apply(null, pts.map(function (r) { return r.v[0]; })), smax = Math.max.apply(null, pts.map(function (r) { return r.v[0]; }));
+    var y0 = Math.floor((smin - 6) / 10) * 10, y1 = Math.ceil((smax + 8) / 10) * 10, Y = function (y) { return m.t + (1 - (y - y0) / (y1 - y0)) * (H - m.t - m.b); };
+    // frontier: cheapest-first, keep each model that beats every cheaper one
+    var byCost = pts.slice().sort(function (a, b) { return a.cost - b.cost; }), fr = [], best = -1;
+    byCost.forEach(function (r) { if (r.v[0] > best) { fr.push(r); best = r.v[0]; } });
+    var onF = {}; fr.forEach(function (r) { onF[r.name] = 1; });
+    var FC = '#e8590c';
     var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Score versus cost">';
     for (var g = y0; g <= y1; g += 10) svg += '<line class="g" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + Y(g) + '" y2="' + Y(g) + '"/><text class="ax" x="' + (m.l - 10) + '" y="' + (Y(g) + 4) + '" text-anchor="end">' + g + '</text>';
-    xs.forEach(function (x) { svg += '<line class="g" x1="' + X(x) + '" x2="' + X(x) + '" y1="' + m.t + '" y2="' + (H - m.b) + '"/><text class="ax" x="' + X(x) + '" y="' + (H - m.b + 22) + '" text-anchor="middle">$' + x + '</text>'; });
-    svg += '<text class="axt" x="' + ((W + m.l) / 2) + '" y="' + (H - 10) + '" text-anchor="middle">API cost per task in US$, mean, log scale</text>';
-    // labels: place right of the point, flip left near the right edge, nudge apart vertically
-    var L = pts.map(function (r) { var px = X(r.cost), py = Y(r.v[0]), right = px < W - 210; return { r: r, px: px, py: py, right: right, ly: py + 5 }; });
-    L.sort(function (a, b) { return a.py - b.py; });
-    for (var k = 0; k < L.length; k++) for (var j = 0; j < k; j++) {
-      var A = L[j], B = L[k];
-      if (Math.abs(A.px - B.px) < 190 && A.right === B.right && Math.abs(A.ly - B.ly) < 17) B.ly = A.ly + 17;
-    }
-    L.forEach(function (o) {
-      var c = vcol(o.r.name);
-      svg += '<circle cx="' + o.px + '" cy="' + o.py + '" r="7" fill="' + c + '"/>';
-      svg += '<text class="pl" x="' + (o.px + (o.right ? 12 : -12)) + '" y="' + o.ly + '" text-anchor="' + (o.right ? 'start' : 'end') + '" fill="' + c + '">' + esc(o.r.name) + '</text>';
+    xs.forEach(function (x) { if (lx(x) > x0 && lx(x) < x1) svg += '<line class="g" x1="' + X(x) + '" x2="' + X(x) + '" y1="' + m.t + '" y2="' + (H - m.b) + '"/><text class="ax" x="' + X(x) + '" y="' + (H - m.b + 22) + '" text-anchor="middle">$' + x + '</text>'; });
+    svg += '<text class="axt" x="' + ((W + m.l) / 2) + '" y="' + (H - 10) + '" text-anchor="middle">API cost per task in US$, log scale</text>';
+    // staircase path + shaded region under it
+    var path = [], xr = W - m.r, yb = H - m.b;
+    fr.forEach(function (r, k) { var px = X(r.cost), py = Y(r.v[0]); if (k === 0) path.push([px, yb]); else path.push([px, Y(fr[k - 1].v[0])]); path.push([px, py]); });
+    path.push([xr, Y(fr[fr.length - 1].v[0])]);
+    var d = path.map(function (p, k) { return (k ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+    svg += '<path d="' + d + ' L' + xr + ' ' + yb + ' Z" fill="' + FC + '" fill-opacity=".07"/>';
+    svg += '<path d="' + d + '" fill="none" stroke="' + FC + '" stroke-width="3" stroke-linejoin="round"/>';
+    // labels: greedy placement avoiding icons, other labels and the frontier line
+    var boxes = [], P = pts.map(function (r) { return { r: r, px: X(r.cost), py: Y(r.v[0]), f: !!onF[r.name] }; });
+    P.forEach(function (o) { boxes.push([o.px - 17, o.py - 17, o.px + 17, o.py + 17]); });
+    for (var q = 1; q < path.length; q++) { var a1 = path[q - 1], a2 = path[q]; boxes.push([Math.min(a1[0], a2[0]) - 2, Math.min(a1[1], a2[1]) - 2, Math.max(a1[0], a2[0]) + 2, Math.max(a1[1], a2[1]) + 2]); }
+    var ov = function (b) { var t = 0; boxes.forEach(function (c) { var dx = Math.min(b[2], c[2]) - Math.max(b[0], c[0]), dy = Math.min(b[3], c[3]) - Math.max(b[1], c[1]); if (dx > 0 && dy > 0) t += dx * dy; }); return t; };
+    P.sort(function (a, b) { return (b.f - a.f) || (a.py - b.py); });
+    var lbl = '';
+    P.forEach(function (o) {
+      var w = o.r.name.length * (o.f ? 9 : 8.2), h = 18, cands = o.f ?
+        [[o.px - w / 2, o.py - 24 - h, 'middle'], [o.px - w / 2, o.py + 24, 'middle'], [o.px + 22, o.py - h / 2, 'start'], [o.px - 22 - w, o.py - h / 2, 'start']] :
+        [[o.px + 22, o.py - h / 2, 'start'], [o.px - 22 - w, o.py - h / 2, 'start'], [o.px - w / 2, o.py + 21, 'middle'], [o.px - w / 2, o.py - 21 - h, 'middle'], [o.px + 22, o.py + 6, 'start'], [o.px + 22, o.py - 24, 'start'], [o.px - 22 - w, o.py + 6, 'start'], [o.px - 22 - w, o.py - 24, 'start']];
+      if (!o.f) [[o.px + 22, o.py + 24], [o.px + 22, o.py - 42], [o.px - 22 - w, o.py + 24], [o.px - 22 - w, o.py - 42], [o.px - w / 2, o.py + 40], [o.px - w / 2, o.py - 58]].forEach(function (e) { cands.push([e[0], e[1], 'start']); });
+      var pick = null, bestS = 1e18;
+      for (var c = 0; c < cands.length; c++) {
+        var b = [cands[c][0], cands[c][1], cands[c][0] + w, cands[c][1] + h];
+        var sc = (b[0] < m.l || b[2] > W - 4 || b[1] < 4 || b[3] > H - m.b) ? 1e9 : ov(b) + c * 3;
+        if (sc < bestS) { bestS = sc; pick = cands[c]; }
+        if (sc < 1e-6 + c * 3 && ov(b) === 0) break;
+      }
+      boxes.push([pick[0], pick[1], pick[0] + w, pick[1] + h]);
+      lbl += '<text class="pl' + (o.f ? ' pf' : '') + '" x="' + (pick[2] === 'middle' ? pick[0] + w / 2 : pick[0]).toFixed(1) + '" y="' + (pick[1] + 14).toFixed(1) + '" text-anchor="' + pick[2] + '">' + esc(o.r.name) + '</text>';
     });
+    P.forEach(function (o) {
+      var s2 = 30;
+      svg += '<rect x="' + (o.px - s2 / 2) + '" y="' + (o.py - s2 / 2) + '" width="' + s2 + '" height="' + s2 + '" rx="7" fill="#fff" stroke="' + (o.f ? FC : '#d8d4cc') + '" stroke-width="' + (o.f ? 2.5 : 1) + '"/>';
+      svg += '<image href="' + vlogo(o.r.name) + '" x="' + (o.px - 10) + '" y="' + (o.py - 10) + '" width="20" height="20"/>';
+    });
+    svg += lbl;
     svg += '</svg>';
     $('#scatter').innerHTML = svg;
-    var miss = rows.filter(function (r) { return !r.cost; }).map(function (r) { return r.name; });
-    var newOnes = rows.filter(function (r) { return r.new; }).map(function (r) { return r.name; });
-    $('#bar-note').innerHTML = rows.filter(function (r) { return r.note; }).map(function (r) { return '§ ' + esc(r.note); }).join(' ') + (st === 'edit' ? ' † Diffusion video editors edit pixels and are not ranked.' : '');
-    $('#sc-note').innerHTML = 'Cost is the mean API spend per task in our runs. Not shown: ' + miss.join(', ') + ' (run locally, cost not logged yet, or diffusion models).';
+    $('#bar-note').innerHTML = st === 'edit' ? '† Diffusion video editors edit pixels and are not ranked.' : '';
+    $('#sc-note').innerHTML = '<b>Cost is the mean API spend per task in our runs.</b>';
   }
   renderCharts();
 

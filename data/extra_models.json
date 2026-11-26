@@ -36,7 +36,9 @@
     75.8,
     62.9,
     54.9
-   ]
+   ],
+   "cost_recon": 0.051,
+   "cost_edit": 0.056
   },
   {
    "name": "Qwen4 Max",
@@ -73,7 +75,9 @@
     66.5,
     47.4,
     45.6
-   ]
+   ],
+   "cost_recon": 0.101,
+   "cost_edit": 0.062
   },
   {
    "name": "HY4",
@@ -110,7 +114,9 @@
     61.9,
     44.2,
     44.5
-   ]
+   ],
+   "cost_recon": 0.158,
+   "cost_edit": 0.099
   },
   {
    "name": "GLM 5.4",
@@ -162,7 +168,20 @@
     43.0,
     44.3
    ],
-   "coverage": "recon 419/420, edit 416/420 (5 items unfinished, excluded)"
+   "coverage": "recon 419/420, edit 416/420 (5 items unfinished, excluded)",
+   "cost_recon": 0.046,
+   "cost_edit": 0.022
   }
- ]
+ ],
+ "cost_overrides": {
+  "Gemini 3.8 Flash": {
+   "recon": 0.564,
+   "edit": 0.507
+  },
+  "Qwen3.8-27B": {
+   "recon": 0.04,
+   "edit": 0.024
+  }
+ },
+ "_cost_readme": "Per-task API cost estimates for the score-vs-cost chart. GPT-6.2 Sol: Codex total tokens x GPT-6.1 Sol effective $/token from the paper runs. Qwen4 Max ($1.50/$4.50 per M, OpenRouter), MiMo-V2.6-Pro ($0.435/$0.87, OpenRouter), HY4 ($0.834/$2.50, Tencent list): mean logged in/out tokens per task x price. Gemini 3.8 Flash: logged spend (flash_ag_full/cost_log.jsonl). Qwen3.8-27B (run locally): recon tokens x OpenRouter $0.40/$3.00; edit tokens not logged, scaled from recon with the Qwen4 Max edit/recon token ratio. Checked 2026-11-26."
 }

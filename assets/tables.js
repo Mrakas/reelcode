@@ -182,7 +182,7 @@ window.TABLES = {
 70.2,
 81.4
 ],
-"cost": null
+"cost": 0.564
 },
 {
 "name": "GPT-6 Luna",
@@ -343,7 +343,7 @@ window.TABLES = {
 61.0,
 73.4
 ],
-"cost": null
+"cost": 0.04
 },
 {
 "name": "GLM-5.3-Flash",
@@ -391,7 +391,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.051
 },
 {
 "name": "Qwen4 Max",
@@ -416,7 +416,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.101
 },
 {
 "name": "HY4",
@@ -441,7 +441,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.158
 },
 {
 "name": "MiMo-V2.6-Pro",
@@ -466,7 +466,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.046
 }
 ],
 "edit": [
@@ -657,7 +657,7 @@ window.TABLES = {
 51.2,
 47.2
 ],
-"cost": null
+"cost": 0.507
 },
 {
 "name": "GPT-6 Luna",
@@ -762,7 +762,7 @@ window.TABLES = {
 42.3,
 39.8
 ],
-"cost": null
+"cost": 0.024
 },
 {
 "name": "HY4-preview",
@@ -869,7 +869,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.056
 },
 {
 "name": "Qwen4 Max",
@@ -892,7 +892,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.062
 },
 {
 "name": "HY4",
@@ -915,7 +915,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.099
 },
 {
 "name": "MiMo-V2.6-Pro",
@@ -938,7 +938,7 @@ window.TABLES = {
 ],
 "new": true,
 "note": null,
-"cost": null
+"cost": 0.022
 }
 ]
 };

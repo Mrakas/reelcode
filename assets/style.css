@@ -323,3 +323,8 @@ h3 { font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
 .full-table summary:hover { color: var(--ink); }
 .newtag { display: inline-block; font: 700 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--accent); border-radius: 4px; padding: 1px 5px; vertical-align: 2px; }
 .bar-chart { padding-left: 46px; margin-left: -20px; }
+.scatter .pl { font: 500 14px var(--sans); fill: var(--ink-3); }
+.scatter .pl.pf { font-weight: 700; font-size: 15px; fill: var(--ink); }
+.lb-head.mid { margin: 4px 0 16px; justify-content: center; }
+
+h2 { max-width: none; }

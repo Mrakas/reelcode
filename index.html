@@ -71,7 +71,7 @@
 <section id="task" class="sec">
   <div class="wrap">
     <p class="kicker">One task, two stages</p>
-    <h2>Rebuild a video from pixels, then edit your own code.</h2>
+    <h2>Rebuild a video in code, then edit it.</h2>
     <p class="lede">The model sees only a reference video. It writes a program (HTML, SVG, Canvas or Three.js) that renders the same motion graphics, then receives a natural-language instruction and must edit <em>its own</em> program. A judge checks rendered frames against fixed checklists.</p>
 
     <div class="triptych" id="teaser">
@@ -109,7 +109,7 @@
     <p class="kicker">Leaderboard · updated as new models are evaluated</p>
     <h2>Who rebuilds and edits best?</h2>
     <div class="lb-head">
-      <div class="seg" id="lb-stage">
+      <div class="seg lb-stage-btns" id="lb-stage">
         <button data-k="recon" class="on">Reconstruction</button>
         <button data-k="edit">Editing</button>
       </div>
@@ -118,6 +118,12 @@
       <h3 class="chart-title" id="bar-title"></h3>
       <div class="bar-chart" id="bar-chart"></div>
       <p class="lb-note" id="bar-note"></p>
+    </div>
+    <div class="lb-head mid">
+      <div class="seg lb-stage-btns">
+        <button data-k="recon" class="on">Reconstruction</button>
+        <button data-k="edit">Editing</button>
+      </div>
     </div>
     <div class="chart-card">
       <h3 class="chart-title" id="sc-title"></h3>
@@ -144,7 +150,7 @@
 <section id="benchmark" class="sec">
   <div class="wrap">
     <p class="kicker">Benchmark</p>
-    <h2>Curated motion graphics, human-verified edits, checklist judging.</h2>
+    <h2>Curated clips, verified edits, checklists.</h2>
     <figure class="figure">
       <img src="static/images/pipeline.webp" alt="Benchmark construction and evaluation pipeline" loading="lazy" width="2063" height="1534">
       <figcaption><b>Benchmark construction and evaluation.</b> (a) Clips from five sources are filtered by rules and a VLM, labeled, and paired with human-verified edit tasks. (b) VLM judges score rendered frames with fixed checklists for reconstruction and editing.</figcaption>
@@ -163,7 +169,7 @@
 <section id="reconstruction" class="sec dark">
   <div class="wrap">
     <p class="kicker">Results · Stage 1</p>
-    <h2>Reconstruction: same video, different programs.</h2>
+    <h2>Same video, different programs.</h2>
     <p class="lede">Each tile is rendered from code that a model wrote after watching only the reference. Videos play in sync; pick a case below.</p>
     <div class="chips" id="recon-tabs"></div>
     <div class="gallery" id="recon-grid"></div>
@@ -195,7 +201,7 @@
 <section id="editing" class="sec">
   <div class="wrap">
     <p class="kicker">Results · Stage 2</p>
-    <h2>Editing: change what was asked, keep everything else.</h2>
+    <h2>Change what was asked, keep the rest.</h2>
     <p class="lede">Each model edits its own reconstruction. Three editors are drawn at random for every case: the top row is before the edit, the bottom row after.</p>
     <div class="chips" id="edit-tabs"></div>
     <div class="editcase">
