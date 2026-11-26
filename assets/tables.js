@@ -210,7 +210,7 @@ window.TABLES = {
 {
 "name": "Claude Sonnet 5.5",
 "group": "Closed-source Models (API)",
-"rank": 16,
+"rank": 17,
 "v": [
 32.7,
 23.9,
@@ -256,7 +256,7 @@ window.TABLES = {
 {
 "name": "DeepSeek-V4-Flash",
 "group": "Open-weight Models",
-"rank": 14,
+"rank": 15,
 "v": [
 36.0,
 26.8,
@@ -279,7 +279,7 @@ window.TABLES = {
 {
 "name": "MiMo-V2.6-Flash",
 "group": "Open-weight Models",
-"rank": 15,
+"rank": 16,
 "v": [
 35.3,
 28.2,
@@ -302,7 +302,7 @@ window.TABLES = {
 {
 "name": "HY4-preview",
 "group": "Open-weight Models",
-"rank": 17,
+"rank": 18,
 "v": [
 32.7,
 29.1,
@@ -325,7 +325,7 @@ window.TABLES = {
 {
 "name": "Qwen3.8-27B",
 "group": "Open-weight Models",
-"rank": 18,
+"rank": 19,
 "v": [
 25.9,
 16.9,
@@ -348,7 +348,7 @@ window.TABLES = {
 {
 "name": "GLM-5.3-Flash",
 "group": "Open-weight Models",
-"rank": 19,
+"rank": 20,
 "v": [
 24.4,
 15.5,
@@ -438,6 +438,31 @@ window.TABLES = {
 65.5,
 65.6,
 76.2
+],
+"new": true,
+"note": null,
+"cost": null
+},
+{
+"name": "MiMo-V2.6-Pro",
+"group": "Closed-source Models (API)",
+"rank": 14,
+"v": [
+38.1,
+29.5,
+46.7,
+39.0,
+43.0,
+21.1,
+29.9,
+46.7,
+44.9,
+41.9,
+40.9,
+59.0,
+65.8,
+70.3,
+82.1
 ],
 "new": true,
 "note": null,
@@ -595,7 +620,7 @@ window.TABLES = {
 {
 "name": "Claude Sonnet 5.5",
 "group": "Closed-source Models (API)",
-"rank": 11,
+"rank": 12,
 "v": [
 46.7,
 57.7,
@@ -616,7 +641,7 @@ window.TABLES = {
 {
 "name": "Gemini 3.8 Flash",
 "group": "Closed-source Models (API)",
-"rank": 14,
+"rank": 15,
 "v": [
 44.5,
 52.4,
@@ -637,7 +662,7 @@ window.TABLES = {
 {
 "name": "GPT-6 Luna",
 "group": "Closed-source Models (API)",
-"rank": 15,
+"rank": 16,
 "v": [
 43.5,
 52.1,
@@ -658,7 +683,7 @@ window.TABLES = {
 {
 "name": "DeepSeek-V4-Flash",
 "group": "Open-weight Models",
-"rank": 12,
+"rank": 13,
 "v": [
 45.2,
 54.5,
@@ -679,7 +704,7 @@ window.TABLES = {
 {
 "name": "Kimi-K3.1-Pro",
 "group": "Open-weight Models",
-"rank": 13,
+"rank": 14,
 "v": [
 44.6,
 51.6,
@@ -700,7 +725,7 @@ window.TABLES = {
 {
 "name": "MiMo-V2.6-Flash",
 "group": "Open-weight Models",
-"rank": 16,
+"rank": 17,
 "v": [
 39.2,
 48.0,
@@ -721,7 +746,7 @@ window.TABLES = {
 {
 "name": "Qwen3.8-27B",
 "group": "Open-weight Models",
-"rank": 17,
+"rank": 18,
 "v": [
 36.9,
 45.3,
@@ -742,7 +767,7 @@ window.TABLES = {
 {
 "name": "HY4-preview",
 "group": "Open-weight Models",
-"rank": 18,
+"rank": 19,
 "v": [
 36.2,
 46.1,
@@ -763,7 +788,7 @@ window.TABLES = {
 {
 "name": "GLM-5.3-Flash",
 "group": "Open-weight Models",
-"rank": 19,
+"rank": 20,
 "v": [
 33.7,
 42.1,
@@ -887,6 +912,29 @@ window.TABLES = {
 61.9,
 44.2,
 44.5
+],
+"new": true,
+"note": null,
+"cost": null
+},
+{
+"name": "MiMo-V2.6-Pro",
+"group": "Closed-source Models (API)",
+"rank": 11,
+"v": [
+48.5,
+63.0,
+42.3,
+44.8,
+67.3,
+45.1,
+44.0,
+54.9,
+44.1,
+43.8,
+67.8,
+43.0,
+44.3
 ],
 "new": true,
 "note": null,
