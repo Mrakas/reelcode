@@ -49,7 +49,7 @@ window.TABLES = {
 {
 "name": "Claude Opus 5.5",
 "group": "Closed-source Models (API)",
-"rank": 3,
+"rank": 4,
 "v": [
 63.0,
 61.5,
@@ -72,7 +72,7 @@ window.TABLES = {
 {
 "name": "GPT-6.1 Terra",
 "group": "Closed-source Models (API)",
-"rank": 4,
+"rank": 5,
 "v": [
 59.7,
 57.4,
@@ -95,7 +95,7 @@ window.TABLES = {
 {
 "name": "Gemini 4 Argon",
 "group": "Closed-source Models (API)",
-"rank": 5,
+"rank": 6,
 "v": [
 52.3,
 49.2,
@@ -118,7 +118,7 @@ window.TABLES = {
 {
 "name": "GPT-5.6 Sol",
 "group": "Closed-source Models (API)",
-"rank": 7,
+"rank": 9,
 "v": [
 45.5,
 39.3,
@@ -141,7 +141,7 @@ window.TABLES = {
 {
 "name": "Claude Haiku 5.5",
 "group": "Closed-source Models (API)",
-"rank": 8,
+"rank": 11,
 "v": [
 42.2,
 34.2,
@@ -164,7 +164,7 @@ window.TABLES = {
 {
 "name": "Gemini 3.8 Flash",
 "group": "Closed-source Models (API)",
-"rank": 9,
+"rank": 12,
 "v": [
 40.1,
 32.3,
@@ -187,7 +187,7 @@ window.TABLES = {
 {
 "name": "GPT-6 Luna",
 "group": "Closed-source Models (API)",
-"rank": 10,
+"rank": 13,
 "v": [
 39.8,
 33.8,
@@ -210,7 +210,7 @@ window.TABLES = {
 {
 "name": "Claude Sonnet 5.5",
 "group": "Closed-source Models (API)",
-"rank": 14,
+"rank": 16,
 "v": [
 32.7,
 23.9,
@@ -233,7 +233,7 @@ window.TABLES = {
 {
 "name": "Kimi-K3.1-Pro",
 "group": "Open-weight Models",
-"rank": 6,
+"rank": 8,
 "v": [
 47.1,
 42.4,
@@ -256,7 +256,7 @@ window.TABLES = {
 {
 "name": "DeepSeek-V4-Flash",
 "group": "Open-weight Models",
-"rank": 11,
+"rank": 14,
 "v": [
 36.0,
 26.8,
@@ -279,7 +279,7 @@ window.TABLES = {
 {
 "name": "MiMo-V2.6-Flash",
 "group": "Open-weight Models",
-"rank": 12,
+"rank": 15,
 "v": [
 35.3,
 28.2,
@@ -302,7 +302,7 @@ window.TABLES = {
 {
 "name": "HY4-preview",
 "group": "Open-weight Models",
-"rank": 13,
+"rank": 17,
 "v": [
 32.7,
 29.1,
@@ -325,7 +325,7 @@ window.TABLES = {
 {
 "name": "Qwen3.8-27B",
 "group": "Open-weight Models",
-"rank": 15,
+"rank": 18,
 "v": [
 25.9,
 16.9,
@@ -348,7 +348,7 @@ window.TABLES = {
 {
 "name": "GLM-5.3-Flash",
 "group": "Open-weight Models",
-"rank": 16,
+"rank": 19,
 "v": [
 24.4,
 15.5,
@@ -367,13 +367,88 @@ window.TABLES = {
 74.8
 ],
 "cost": 0.0088
+},
+{
+"name": "GPT-6.2 Sol",
+"group": "Closed-source Models (API)",
+"rank": 3,
+"v": [
+66.4,
+67.3,
+62.2,
+75.5,
+76.5,
+65.2,
+65.9,
+65.5,
+64.5,
+65.8,
+64.1,
+67.4,
+76.5,
+78.4,
+85.2
+],
+"new": true,
+"note": "Judged partly by GPT-6.1 Sol (same family); the independent Sonnet judge scores its edits higher (64.6 vs 62.2).",
+"cost": null
+},
+{
+"name": "Qwen4 Max",
+"group": "Closed-source Models (API)",
+"rank": 7,
+"v": [
+47.7,
+42.7,
+52.5,
+52.6,
+55.9,
+35.6,
+43.9,
+52.8,
+50.4,
+51.4,
+49.0,
+60.1,
+69.4,
+71.5,
+81.7
+],
+"new": true,
+"note": null,
+"cost": null
+},
+{
+"name": "HY4",
+"group": "Closed-source Models (API)",
+"rank": 10,
+"v": [
+43.5,
+39.1,
+45.9,
+46.4,
+49.1,
+36.2,
+41.4,
+47.9,
+46.0,
+47.3,
+44.6,
+53.9,
+65.5,
+65.6,
+76.2
+],
+"new": true,
+"note": null,
+"cost": null
 }
 ],
 "edit": [
 {
 "name": "GPT-6 Astra",
 "group": "Closed-source Models (API)",
-"rank": 1,
+"rank": 2,
 "v": [
 61.2,
 72.1,
@@ -394,7 +469,7 @@ window.TABLES = {
 {
 "name": "GPT-6.1 Terra",
 "group": "Closed-source Models (API)",
-"rank": 2,
+"rank": 3,
 "v": [
 59.9,
 70.6,
@@ -415,7 +490,7 @@ window.TABLES = {
 {
 "name": "Claude Opus 5.5",
 "group": "Closed-source Models (API)",
-"rank": 3,
+"rank": 4,
 "v": [
 59.5,
 70.5,
@@ -436,7 +511,7 @@ window.TABLES = {
 {
 "name": "GPT-6.1 Sol",
 "group": "Closed-source Models (API)",
-"rank": 4,
+"rank": 5,
 "v": [
 58.6,
 68.2,
@@ -457,7 +532,7 @@ window.TABLES = {
 {
 "name": "Gemini 4 Argon",
 "group": "Closed-source Models (API)",
-"rank": 5,
+"rank": 6,
 "v": [
 54.2,
 62.5,
@@ -478,7 +553,7 @@ window.TABLES = {
 {
 "name": "Claude Haiku 5.5",
 "group": "Closed-source Models (API)",
-"rank": 6,
+"rank": 7,
 "v": [
 52.2,
 63.7,
@@ -499,7 +574,7 @@ window.TABLES = {
 {
 "name": "GPT-5.6 Sol",
 "group": "Closed-source Models (API)",
-"rank": 7,
+"rank": 9,
 "v": [
 48.7,
 57.9,
@@ -520,7 +595,7 @@ window.TABLES = {
 {
 "name": "Claude Sonnet 5.5",
 "group": "Closed-source Models (API)",
-"rank": 8,
+"rank": 11,
 "v": [
 46.7,
 57.7,
@@ -541,7 +616,7 @@ window.TABLES = {
 {
 "name": "Gemini 3.8 Flash",
 "group": "Closed-source Models (API)",
-"rank": 11,
+"rank": 14,
 "v": [
 44.5,
 52.4,
@@ -562,7 +637,7 @@ window.TABLES = {
 {
 "name": "GPT-6 Luna",
 "group": "Closed-source Models (API)",
-"rank": 12,
+"rank": 15,
 "v": [
 43.5,
 52.1,
@@ -583,7 +658,7 @@ window.TABLES = {
 {
 "name": "DeepSeek-V4-Flash",
 "group": "Open-weight Models",
-"rank": 9,
+"rank": 12,
 "v": [
 45.2,
 54.5,
@@ -604,7 +679,7 @@ window.TABLES = {
 {
 "name": "Kimi-K3.1-Pro",
 "group": "Open-weight Models",
-"rank": 10,
+"rank": 13,
 "v": [
 44.6,
 51.6,
@@ -625,7 +700,7 @@ window.TABLES = {
 {
 "name": "MiMo-V2.6-Flash",
 "group": "Open-weight Models",
-"rank": 13,
+"rank": 16,
 "v": [
 39.2,
 48.0,
@@ -646,7 +721,7 @@ window.TABLES = {
 {
 "name": "Qwen3.8-27B",
 "group": "Open-weight Models",
-"rank": 14,
+"rank": 17,
 "v": [
 36.9,
 45.3,
@@ -667,7 +742,7 @@ window.TABLES = {
 {
 "name": "HY4-preview",
 "group": "Open-weight Models",
-"rank": 15,
+"rank": 18,
 "v": [
 36.2,
 46.1,
@@ -688,7 +763,7 @@ window.TABLES = {
 {
 "name": "GLM-5.3-Flash",
 "group": "Open-weight Models",
-"rank": 16,
+"rank": 19,
 "v": [
 33.7,
 42.1,
@@ -746,6 +821,75 @@ window.TABLES = {
 47.8,
 25.1
 ],
+"cost": null
+},
+{
+"name": "GPT-6.2 Sol",
+"group": "Closed-source Models (API)",
+"rank": 1,
+"v": [
+63.4,
+71.8,
+65.8,
+56.4,
+77.6,
+67.7,
+56.5,
+62.3,
+69.2,
+57.0,
+75.8,
+62.9,
+54.9
+],
+"new": true,
+"note": "Judged partly by GPT-6.1 Sol (same family); the independent Sonnet judge scores its edits higher (64.6 vs 62.2).",
+"cost": null
+},
+{
+"name": "Qwen4 Max",
+"group": "Closed-source Models (API)",
+"rank": 8,
+"v": [
+52.2,
+64.8,
+48.4,
+46.6,
+68.6,
+51.4,
+45.6,
+56.4,
+50.2,
+45.5,
+66.5,
+47.4,
+45.6
+],
+"new": true,
+"note": null,
+"cost": null
+},
+{
+"name": "HY4",
+"group": "Closed-source Models (API)",
+"rank": 10,
+"v": [
+48.6,
+60.4,
+45.0,
+44.6,
+62.9,
+46.5,
+43.8,
+53.8,
+47.5,
+44.1,
+61.9,
+44.2,
+44.5
+],
+"new": true,
+"note": null,
 "cost": null
 }
 ]

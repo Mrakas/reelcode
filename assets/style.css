@@ -321,3 +321,5 @@ h3 { font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
 .full-table { margin-top: 8px; }
 .full-table summary { cursor: pointer; font-weight: 600; padding: 10px 0; color: var(--ink-2); }
 .full-table summary:hover { color: var(--ink); }
+.newtag { display: inline-block; font: 700 9.5px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #fff; background: var(--accent); border-radius: 4px; padding: 1px 5px; vertical-align: 2px; }
+.bar-chart { padding-left: 46px; margin-left: -20px; }
