@@ -325,6 +325,6 @@ h3 { font-size: 18px; letter-spacing: -.01em; margin: 0 0 8px; }
 .bar-chart { padding-left: 46px; margin-left: -20px; }
 .scatter .pl { font: 500 14px var(--sans); fill: var(--ink-3); }
 .scatter .pl.pf { font-weight: 700; font-size: 15px; fill: var(--ink); }
-.lb-head.mid { margin: 4px 0 16px; justify-content: center; }
+.lb-head.mid { margin: 4px 0 16px; justify-content: flex-start; }
 
 h2 { max-width: none; }
