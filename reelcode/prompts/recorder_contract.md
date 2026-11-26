@@ -1,0 +1,5 @@
+- The page is loaded at http://localhost/.../index.html in headless Chromium with viewport exactly equal to the canvas size, and recorded from t=0 by stepping a virtual clock (requestAnimationFrame, performance.now, Date.now, setTimeout/setInterval and Web Animations/CSS animations are all driven by it). The animation must start by itself on load and be a deterministic function of time.
+- Set `window.__DURATION__ = <seconds>` (the exact duration given below) at the top of your script. The recorder stops at that duration.
+- Body margin 0, overflow hidden, background drawn by you; no scrolling, no user interaction.
+- Local libraries are served from absolute paths (see list below); the page itself may only load those and relative resources.
+- The recorder screenshots the page, so Canvas/WebGL must use `preserveDrawingBuffer: true`.
